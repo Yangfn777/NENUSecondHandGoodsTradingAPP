@@ -5,7 +5,7 @@ package com.join.GoodsTradingProgram.entity.manager;
  * @Description:
  * @Date: 21:30 2020/5/16
  */
-public class manager {
+public class Manager {
 
     private int id;
     private String managerName;
