@@ -2,6 +2,7 @@ package com.join.GoodsTradingProgram.service.managerService;
 
 
 import com.join.GoodsTradingProgram.entity.manager.Manager;
+import com.join.GoodsTradingProgram.entity.user.User;
 
 import java.util.List;
 
@@ -13,5 +14,13 @@ import java.util.List;
 public interface ManagerService {
     public Manager login(Manager manager)throws Exception;
 
-    public List<Manager> ListAll()throws Exception;
+    public Manager addManager(Manager manager)throws Exception;
+
+    public Manager updateManager(String managerName,String password)throws Exception;
+
+    public List<Manager> ListManager()throws Exception;
+
+    public List<User> ListUser()throws Exception;
+
+    public User deleteUser(User user)throws Exception;
 }
