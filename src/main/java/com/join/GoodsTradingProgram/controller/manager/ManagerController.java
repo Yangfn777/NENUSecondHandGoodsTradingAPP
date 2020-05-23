@@ -1,7 +1,9 @@
 package com.join.GoodsTradingProgram.controller.manager;
 
 import com.join.GoodsTradingProgram.entity.manager.Manager;
+import com.join.GoodsTradingProgram.entity.user.User;
 import com.join.GoodsTradingProgram.service.managerService.ManagerService;
+import com.join.GoodsTradingProgram.service.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,9 +25,15 @@ public class ManagerController {
     @Autowired
     private ManagerService managerService;
 
+    private UserService userService;
+
     @ResponseBody
-    @RequestMapping("/listAll")
-    public List<Manager> ListAll()throws Exception{
-        return managerService.ListAll();
+    @RequestMapping("/listManager")
+    public List<Manager> ListManager()throws Exception{
+        return managerService.ListManager();
+    }
+
+    public List<User> ListUser()throws Exception{
+        return userService.listAll();
     }
 }
