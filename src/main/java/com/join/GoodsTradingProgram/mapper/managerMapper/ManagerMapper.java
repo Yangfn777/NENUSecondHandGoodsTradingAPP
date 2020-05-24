@@ -46,19 +46,4 @@ public interface ManagerMapper {
      * @throws Exception
      */
     public List<Manager> listManager()throws Exception;
-
-    /**
-     * 查询用户列表
-     * @return
-     * @throws Exception
-     */
-    public List<User> listUser()throws Exception;
-
-    /**
-     * 删除用户
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    public User deleteUser(@Param("user")User user)throws Exception;
 }
