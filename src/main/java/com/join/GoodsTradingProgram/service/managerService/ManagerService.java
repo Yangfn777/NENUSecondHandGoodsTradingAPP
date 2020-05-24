@@ -19,8 +19,4 @@ public interface ManagerService {
     public Manager updateManager(String managerName,String password)throws Exception;
 
     public List<Manager> ListManager()throws Exception;
-
-    public List<User> ListUser()throws Exception;
-
-    public User deleteUser(User user)throws Exception;
 }
