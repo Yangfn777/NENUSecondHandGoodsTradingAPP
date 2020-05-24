@@ -28,7 +28,7 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public Manager login(Manager manager) throws Exception {
-        return null;
+        return managerMapper.login(manager);
     }
 
     /**
@@ -39,7 +39,7 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public Manager addManager(Manager manager) throws Exception {
-        return null;
+        return managerMapper.addManager(manager);
     }
 
     /**
@@ -51,7 +51,7 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public Manager updateManager(String managerName, String password) throws Exception {
-        return null;
+        return managerMapper.updateManager(managerName, password);
     }
 
     /**
@@ -61,27 +61,7 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public List<Manager> ListManager() throws Exception {
-        return null;
+        return managerMapper.listManager();
     }
 
-    /**
-     * 查询用户列表
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public List<User> ListUser() throws Exception {
-        return null;
-    }
-
-    /**
-     * 删除用户
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public User deleteUser(User user) throws Exception {
-        return null;
-    }
 }
