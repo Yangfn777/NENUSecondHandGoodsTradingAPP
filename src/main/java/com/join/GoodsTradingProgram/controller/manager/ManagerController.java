@@ -33,7 +33,4 @@ public class ManagerController {
         return managerService.ListManager();
     }
 
-    public List<User> ListUser()throws Exception{
-        return userService.listAll();
-    }
 }
