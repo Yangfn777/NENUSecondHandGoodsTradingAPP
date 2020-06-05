@@ -8,13 +8,20 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @Author: Yangfn
+ * @Author: Liulq
  * @Description:
  * @Date: 22:19 2020/5/9
  */
 @Repository
 @Mapper
 public interface UserMapper {
+    /**
+     * 列出所有user
+     * @return
+     * @throws Exception
+     */
+    public List<User> listUser()throws Exception;
+
     /**
      * 登录
      * @param user
@@ -29,51 +36,38 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public int addUser(@Param("user")User user)throws Exception;
+    public boolean addUser(@Param("user")User user)throws Exception;
 
     /**
-     * 更新个人信息
+     * 查找user的信息
      * @param user
      * @return
      * @throws Exception
      */
-    public int updateUser(@Param("user") User user)throws Exception;
-    /**
-     * 更新密码
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    public int updatePassword(@Param("user")User user)throws Exception;
+    public User selectUserMessage(@Param("user")User user)throws Exception;
 
     /**
-     * 更新密码
+     * 按id删除该user
      * @param id
      * @return
      * @throws Exception
      */
-    public int updateStatus(@Param("id")int id,@Param("status")int status)throws Exception;
+    public boolean delUser(@Param("id")int id)throws Exception;
 
     /**
-     * 删除
-     * @param card
+     * 修改密码
+     * @param user
      * @return
      * @throws Exception
      */
-    public int deleteUser(@Param("card")String card)throws Exception;
+    public boolean updatePwd(@Param("user")User user)throws Exception;
 
-    /**
-     * 列出所有user
-     * @return
-     * @throws Exception
-     */
-    public List<User> listUser()throws Exception;
-    /**
-     * 查询
-     * @return
-     * @throws Exception
-     */
-    public List<User> queryUser(@Param("card")String card)throws Exception;
+//    /**
+//     * 查询
+//     * @return
+//     * @throws Exception
+//     */
+//    public List<User> queryUser(@Param("card")String card)throws Exception;
 //    /**
 //     * 查询
 //     * @return
@@ -81,12 +75,12 @@ public interface UserMapper {
 //     */
 //    public List<Report> queryReport(@Param("stu_id")int stu_id)throws Exception;
 
-    /**
-     * 上传头像
-     * @return
-     * @throws Exception
-     */
-    public int uploadHead(@Param("id")int id,@Param("path")String path,@Param("HeadUrl")String HeadUrl)throws Exception;
+//    /**
+//     * 上传头像
+//     * @return
+//     * @throws Exception
+//     */
+//    public int uploadHead(@Param("id")int id,@Param("path")String path,@Param("HeadUrl")String HeadUrl)throws Exception;
 //    /**
 //     * 增加反馈
 //     * @param feelBack

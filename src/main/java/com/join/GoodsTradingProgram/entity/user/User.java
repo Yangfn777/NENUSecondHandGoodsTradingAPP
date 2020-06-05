@@ -1,18 +1,18 @@
 package com.join.GoodsTradingProgram.entity.user;
 
 /**
- * @Author: Yangfn
+ * @Author: Liulq
  * @Description:
  * @Date: 21:28 2020/5/9
  */
 public class User {
 
     private int id;
+    private String realname;
     private String username;
     private String password;
-    private String sex;
-    private String headUrl;
-    private String path;
+    private String profession;
+    private String stuno;
 
     public int getId() {
         return id;
@@ -20,6 +20,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
     public String getUsername() {
@@ -38,27 +46,19 @@ public class User {
         this.password = password;
     }
 
-    public String getSex() {
-        return sex;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
-    public String getHeadUrl() {
-        return headUrl;
+    public String getStuno() {
+        return stuno;
     }
 
-    public void setHeadUrl(String headUrl) {
-        this.headUrl = headUrl;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
+    public void setStuno(String stuno) {
+        this.stuno = stuno;
     }
 }

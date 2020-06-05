@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @Author: Yangfn
+ * @Author: Liulq
  * @Description:
  * @Date: 22:21 2020/5/9
  */
@@ -18,99 +18,34 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
-    /**
-     * 登录
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public User login(User user) throws Exception{
-        return userMapper.login(user);
-    }
 
-    /**
-     * 注册
-     * @param user
-     * @return
-     * @throws Exception
-     */
     @Override
-    public int addUser(User user) throws Exception{
-        return userMapper.addUser(user);
-    }
-
-    /**
-     * 修改个人信息
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public int update(User user) throws Exception{
-        return userMapper.updateUser(user);
-    }
-    /**
-     * 修改密码
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public int updatePassword(User user) throws Exception{
-        return userMapper.updatePassword(user);
-    }
-    /**
-     * 修改状态
-     * @param id
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public int updateStatus(int id,int status) throws Exception{
-        return userMapper.updateStatus(id,status);
-    }
-    @Override
-    public List<User> listAll()throws Exception{
-        return userMapper.listUser();
-    }
-    @Override
-    public List<User> queryUser(String card)throws Exception{
-        return userMapper.queryUser(card);
+    public List<User> listUser() throws Exception {
+        return null;
     }
 
     @Override
-    public int delete(String card)throws Exception{
-        return userMapper.deleteUser(card);
+    public User login(User user) throws Exception {
+        return null;
     }
-    /**
-     * 判断用户名
-     * @param
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public boolean judgeUsername(String name) throws Exception{
-        boolean b=true;
-        List<User> list=userMapper.listUser();
-        for(int i=0;i<list.size();i++){
-            User user=list.get(i);
-            if(user.getUsername().equals(name)){
-                b=false;
-                return b;
-            }
-        }
-        return b;
-    }
-    /**
-     * 上传头像
-     * @param
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public int uploadHead(int id,String path,String headUrl) throws Exception{
-        return userMapper.uploadHead(id,path,headUrl);
 
+    @Override
+    public boolean addUser(User user) throws Exception {
+        return false;
+    }
+
+    @Override
+    public User selectUserMessage(User user) throws Exception {
+        return null;
+    }
+
+    @Override
+    public boolean delUser(int id) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean updatePwd(User user) throws Exception {
+        return false;
     }
 }
