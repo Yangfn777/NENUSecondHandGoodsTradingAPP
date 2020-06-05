@@ -12,4 +12,18 @@
         SELECT *
         FROM t_manager
     </select>
+    <select id="login" resultType="com.join.GoodsTradingProgram.entity.manager.Manager">
+        SELECT *
+        FROM t_manager
+        WHERE managerName=#{manager.managerName} AND password=#{manager.password}
+    </select>
+    <select id="addManager" resultType="com.join.GoodsTradingProgram.entity.manager.Manager">
+        INSERT INTO t_manager(managerName,password)
+        VALUES (#{manager.managerName},#{manager.password})
+    </select>
+    <select id="updateManager" resultType="com.join.GoodsTradingProgram.entity.manager.Manager">
+        UPDATE t_manager
+        SET password=#{manager.password}
+        WHERE id=#{manager.id}
+    </select>
 </mapper>

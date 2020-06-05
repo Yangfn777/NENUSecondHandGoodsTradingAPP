@@ -1,6 +1,9 @@
 package com.join.GoodsTradingProgram.test;
 
+import com.join.GoodsTradingProgram.entity.manager.Manager;
+import com.join.GoodsTradingProgram.service.managerService.ManagerService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -10,8 +13,27 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 public class ManagerTest {
-    @Test
-    public void ListAllTest(){
 
+    @Autowired
+    ManagerService managerService;
+
+    @Test
+    public void ListAllTest()throws Exception{
+
+    }
+
+    @Test
+    public void testLogin() throws Exception {
+        Manager manager = new Manager();
+        manager.setManagerName("manager1");
+        manager.setPassword("123456");
+        System.out.println(managerService.login(manager));
+    }
+
+    @Test
+    public void testAddManager()throws Exception{
+        Manager manager = new Manager();
+        manager.setManagerName("newManager");
+        manager.setPassword("123");
     }
 }

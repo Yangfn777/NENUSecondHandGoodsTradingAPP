@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -57,7 +56,7 @@ public class UserController {
 
     @RequestMapping(value = "addUser")
     public int addUser(User user)throws Exception{
-        boolean a =userService.addUser(user);
+        boolean a = userService.addUser(user);
         int b=0;
         if (a == true){
             b=1;

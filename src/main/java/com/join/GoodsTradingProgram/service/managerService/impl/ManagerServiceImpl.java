@@ -19,7 +19,6 @@ public class ManagerServiceImpl implements ManagerService {
     @Autowired
     ManagerMapper managerMapper;
 
-
     /**
      * 管理员登录
      * @param manager
@@ -28,40 +27,38 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public Manager login(Manager manager) throws Exception {
-        return managerMapper.login(manager);
+        return null;
     }
 
     /**
-     * 增加管理员
+     * 添加管理员
      * @param manager
      * @return
      * @throws Exception
      */
     @Override
-    public Manager addManager(Manager manager) throws Exception {
-        return managerMapper.addManager(manager);
+    public boolean addManager(Manager manager) throws Exception {
+        return false;
     }
 
     /**
-     * 修改管理员个人信息
-     * @param managerName
-     * @param password
+     * 修改管理员密码
+     * @param manager
      * @return
      * @throws Exception
      */
     @Override
-    public Manager updateManager(String managerName, String password) throws Exception {
-        return managerMapper.updateManager(managerName, password);
+    public boolean updateManager(Manager manager) throws Exception {
+        return false;
     }
 
     /**
-     * 查询管理员列表
+     * 查看管理员列表
      * @return
      * @throws Exception
      */
     @Override
     public List<Manager> ListManager() throws Exception {
-        return managerMapper.listManager();
+        return null;
     }
-
 }
