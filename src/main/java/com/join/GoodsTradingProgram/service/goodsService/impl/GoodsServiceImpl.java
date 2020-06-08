@@ -6,6 +6,8 @@ import com.join.GoodsTradingProgram.service.goodsService.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author: Yangfn
  * @Description:
@@ -15,11 +17,30 @@ import org.springframework.stereotype.Service;
 public class GoodsServiceImpl implements GoodsService {
     @Autowired
     GoodsMapper goodsMapper;
+
     public int deleteGoods(int id)throws Exception{
         return goodsMapper.deleteGoods(id);
     }
 
     public int addGoods(Goods goods)throws Exception{
         return goodsMapper.addGoods(goods);
+    }
+    public List<Goods> listGoods(int id)throws Exception{
+        return goodsMapper.listGoods(id);
+    }
+    public List<Goods> list()throws Exception{
+        return goodsMapper.list();
+    }
+    public int updateGoods(Goods goods)throws Exception{
+        return goodsMapper.updateGoods(goods);
+    }
+    public List<Goods> queryType(String type)throws Exception{
+        return goodsMapper.queryType(type);
+    }
+    public List<Goods> queryDes(String des)throws Exception{
+        return goodsMapper.queryDes(des);
+    }
+    public Goods queryId(int id)throws Exception{
+        return goodsMapper.queryId(id);
     }
 }

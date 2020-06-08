@@ -29,9 +29,46 @@ public class GoodsController {
     }
 
     @ResponseBody
+    @RequestMapping("/updateGoods")
+    public int updateGoods(Goods goods)throws Exception{
+        return goodsService.updateGoods(goods);
+    }
+
+    @ResponseBody
+    @RequestMapping("/list")
+    public List<Goods> list()throws Exception{
+        return goodsService.list();
+    }
+
+    @ResponseBody
+    @RequestMapping("/queryDes")
+    public List<Goods> queryDes(String des)throws Exception{
+        return goodsService.queryDes(des);
+    }
+
+    @ResponseBody
+    @RequestMapping("/queryId")
+    public Goods queryId(int id)throws Exception{
+        return goodsService.queryId(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/queryType")
+    public List<Goods> queryType(String type)throws Exception{
+        return goodsService.queryType(type);
+    }
+
+    @ResponseBody
+    @RequestMapping("/listGoods")
+    public List<Goods> listGoods(int id)throws Exception{
+        return goodsService.listGoods(id);
+    }
+
+    @ResponseBody
     @RequestMapping("/deleteGoods")
     public int deleteGoods(int id)throws Exception{
         return goodsService.deleteGoods(id);
     }
+
 
 }

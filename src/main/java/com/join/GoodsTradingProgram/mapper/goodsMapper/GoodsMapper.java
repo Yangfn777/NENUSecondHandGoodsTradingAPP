@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @Author: Yangfn
  * @Description:
@@ -28,4 +30,47 @@ public interface GoodsMapper {
      * @throws Exception
      */
     public int deleteGoods(@Param("id")int id)throws Exception;
+
+    /**
+     *
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public List<Goods> list()throws Exception;
+    /**
+     *
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public List<Goods> listGoods(@Param("id")int id)throws Exception;
+    /**
+     *
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public int updateGoods(@Param("goods")Goods goods)throws Exception;
+    /**
+     *
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public List<Goods> queryType(@Param("type")String type)throws Exception;
+    /**
+     *
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public List<Goods> queryDes(@Param("des")String des)throws Exception;
+    /**
+     *
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public Goods queryId(@Param("id")int id)throws Exception;
 }

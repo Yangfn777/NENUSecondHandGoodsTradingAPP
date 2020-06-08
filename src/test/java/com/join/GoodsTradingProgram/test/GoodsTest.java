@@ -31,4 +31,29 @@ public class GoodsTest {
         int id=4;
         System.out.println(goodsController.deleteGoods(id));
     }
+
+    @Test
+    public void queryType()throws Exception{
+        System.out.println(goodsController.queryType("书"));
+    }
+
+    @Test
+    public void queryId()throws Exception{
+        System.out.println(goodsController.queryId(1));
+    }
+
+    @Test
+    public void queryDes()throws Exception{
+        System.out.println(goodsController.queryDes("论"));
+    }
+
+    @Test
+    public void list()throws Exception{
+        System.out.println(goodsController.list());
+    }
+    @Test
+    public void listGoods()throws Exception{
+        int id=1;
+        System.out.println(goodsController.listGoods(id));
+    }
 }

@@ -8,12 +8,12 @@ package com.join.GoodsTradingProgram.entity.goods;
 public class Goods {
     private int id;
     private int userId;
-    private String type;
-    private String description;
-    private String picUrl;
+    private String type;//类型
+    private String description;//描述
+    private String picUrl;//图片
     private String path;
     private int degree;//新旧程度
-    private float price;
+    private float price;//价格
 
     public int getId() {
         return id;

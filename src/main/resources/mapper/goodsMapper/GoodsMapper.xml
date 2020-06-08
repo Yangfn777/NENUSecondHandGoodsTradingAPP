@@ -4,47 +4,50 @@
 <mapper namespace="com.join.GoodsTradingProgram.mapper.goodsMapper.GoodsMapper">
     <resultMap id="goods" type="com.join.GoodsTradingProgram.entity.goods.Goods">
         <id property="id" column="id"/>
-        <result property="username" column="username"/>
-        <result property="password" column="password"/>
-        <result property="sex" column="sex"/>
+        <result property="userId" column="userId"/>
+        <result property="type" column="type"/>
     </resultMap>
 
-    <!--<select id="listGoods" resultType="com.join.GoodsTradingProgram.entity.user.User">-->
-        <!--SELECT *-->
-        <!--FROM t_user-->
-    <!--</select>-->
+    <select id="list" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    </select>
 
+    <select id="queryId" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    where id=#{id}
+    </select>
 
+    <select id="queryType" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    where type=#{type}
+    </select>
 
-    <!--<select id="listFeelBack" resultType="feelBack">-->
-    <!--SELECT *-->
-    <!--FROM t_feelback-->
-    <!--</select>-->
+    <select id="queryDes" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    where description like '%${des}'
+    </select>
 
-    <!--<update id="updateFeelBack">-->
-    <!--UPDATE t_feelback-->
-    <!--SET status=#{feelback.status}-->
-    <!--WHERE id=#{feelback.id}-->
-    <!--</update>-->
+    <select id="listGoods" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    where userId=#{id}
+    </select>
+
+    <update id="updateGoods">
+    UPDATE t_goods
+    SET type=#{goods.type},desciption=#{goods.desciption},price=#{goods.price},degree=#{goods.degree}
+    WHERE id=#{goods.id}
+    </update>
 
     <delete id="deleteGoods">
     DELETE FROM t_goods
     WHERE id=#{id}
     </delete>
 
-
-
-    <!--<update id="updateUser">-->
-    <!--UPDATE t_user-->
-    <!--SET major=#{user.major},college=#{user.college}-->
-    <!--WHERE id=#{user.id}-->
-    <!--</update>-->
-
-    <!--<update id="updateReport">-->
-    <!--UPDATE t_report-->
-    <!--SET score=#{report.score},point=#{report.point}-->
-    <!--WHERE id=#{report.id}-->
-    <!--</update>-->
 
     <insert id="addGoods">
     INSERT INTO t_goods
