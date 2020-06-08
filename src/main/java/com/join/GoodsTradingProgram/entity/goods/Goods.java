@@ -10,9 +10,8 @@ public class Goods {
     private int userId;
     private String type;//类型
     private String description;//描述
-    private String picUrl;//图片
-    private String path;
-    private int degree;//新旧程度
+    private String title;//标题
+    private int view;//浏览量
     private float price;//价格
 
     public int getId() {
@@ -21,6 +20,14 @@ public class Goods {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getType() {
@@ -39,20 +46,20 @@ public class Goods {
         this.description = description;
     }
 
-    public String getPicUrl() {
-        return picUrl;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getPath() {
-        return path;
+    public int getView() {
+        return view;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setView(int view) {
+        this.view = view;
     }
 
     public float getPrice() {
@@ -61,31 +68,5 @@ public class Goods {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setDegree(int degree) {
-        this.degree = degree;
-    }
-
-    @Override
-    public String toString() {
-        return "Goods{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", type='" + type + '\'' +
-                ", description='" + description + '\'' +
-                ", picUrl='" + picUrl + '\'' +
-                ", path='" + path + '\'' +
-                ", degree=" + degree +
-                ", price=" + price +
-                '}';
     }
 }

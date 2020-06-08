@@ -2,8 +2,6 @@ package com.join.GoodsTradingProgram.test;
 
 import com.join.GoodsTradingProgram.controller.goods.GoodsController;
 import com.join.GoodsTradingProgram.entity.goods.Goods;
-import com.join.GoodsTradingProgram.mapper.goodsMapper.GoodsMapper;
-import com.join.GoodsTradingProgram.service.goodsService.GoodsService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +20,7 @@ public class GoodsTest {
     public void addGoodsTest()throws Exception {
         Goods goods=new Goods();
         goods.setUserId(1);
-        goods.setDegree(7);
+        goods.setView(7);
         goods.setType("衣架");
         System.out.println(goodsController.addGoods(goods));
     }

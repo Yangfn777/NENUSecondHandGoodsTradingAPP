@@ -39,7 +39,7 @@
 
     <update id="updateGoods">
     UPDATE t_goods
-    SET type=#{goods.type},desciption=#{goods.desciption},price=#{goods.price},degree=#{goods.degree}
+    SET type=#{goods.type},desciption=#{goods.desciption},price=#{goods.price},view=#{goods.view}
     WHERE id=#{goods.id}
     </update>
 
@@ -51,8 +51,8 @@
 
     <insert id="addGoods">
     INSERT INTO t_goods
-    (userId,type,description,picUrl,path,degree,price)
+    (userId,type,description,view,price)
     VALUES (#{goods.userId},#{goods.type},
-    #{goods.description},#{goods.picUrl},#{goods.path},#{goods.degree},#{goods.price})
+    #{goods.description},#{goods.view},#{goods.price})
     </insert>
 </mapper>
