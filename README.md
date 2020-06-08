@@ -19,7 +19,7 @@ backstage 后端统一代码
 
 frontstage 前端统一代码
 
-ylq 队长杨芳凝个人分支
+ylq 组长杨芳凝个人分支
 
 wlh 前端负责人王丽红个人分支
 
