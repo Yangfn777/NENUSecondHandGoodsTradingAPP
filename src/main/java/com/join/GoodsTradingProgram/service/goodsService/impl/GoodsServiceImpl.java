@@ -43,4 +43,9 @@ public class GoodsServiceImpl implements GoodsService {
     public Goods queryId(int id)throws Exception{
         return goodsMapper.queryId(id);
     }
+
+    public int addView(Goods goods)throws Exception{
+        goods.setView(goods.getView()+1);
+        return goodsMapper.addView(goods);
+    }
 }

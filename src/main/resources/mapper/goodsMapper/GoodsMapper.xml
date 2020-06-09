@@ -39,7 +39,13 @@
 
     <update id="updateGoods">
     UPDATE t_goods
-    SET type=#{goods.type},desciption=#{goods.desciption},price=#{goods.price},view=#{goods.view}
+    SET type=#{goods.type},desciption=#{goods.desciption},price=#{goods.price},title=#{goods.title}
+    WHERE id=#{goods.id}
+    </update>
+
+    <update id="updateGoods">
+    UPDATE t_goods
+    SET view=#{goods.view}
     WHERE id=#{goods.id}
     </update>
 
@@ -47,7 +53,6 @@
     DELETE FROM t_goods
     WHERE id=#{id}
     </delete>
-
 
     <insert id="addGoods">
     INSERT INTO t_goods

@@ -52,6 +52,15 @@ public interface GoodsMapper {
      * @throws Exception
      */
     public int updateGoods(@Param("goods")Goods goods)throws Exception;
+
+    /**
+     *
+     * @param
+     * @return
+     * @throws Exception
+     */
+    public int addView(@Param("goods")Goods goods)throws Exception;
+
     /**
      *
      * @param

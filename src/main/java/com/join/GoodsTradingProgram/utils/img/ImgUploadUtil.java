@@ -66,33 +66,5 @@ public class ImgUploadUtil {
 
     }
 
-    public String imgUpload2(MultipartFile file, String path, Integer num){
-        if (file.isEmpty()) {
-            System.out.println("文件为空");
-            return null;
-        }
-        //String fileName = filename;
-        //file.getOriginalFilename();  // 文件名
-        //String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
-        //String filePath = "/www/wwwroot/yanglq.xyz/images"+path; // 上传后的路径
-        //fileName = fileName + suffixName; // 新文件名
-        String fileName = file.getOriginalFilename();
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        String filename=num.toString() + suffixName;
-        path = path + filename;
-        File dest = new File(path);
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs();
-        }
-        try {
-            file.transferTo(dest);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //String filename = "/temp-rainy/" + fileName;
-        // model.addAttribute("filename", filename);
-        return filename;
-    }
-
 
 }

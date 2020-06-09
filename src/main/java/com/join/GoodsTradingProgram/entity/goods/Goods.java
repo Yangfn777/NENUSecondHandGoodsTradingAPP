@@ -1,5 +1,7 @@
 package com.join.GoodsTradingProgram.entity.goods;
 
+import java.util.Date;
+
 /**
  * @Author: Yangfn
  * @Description:
@@ -13,6 +15,7 @@ public class Goods {
     private String title;//标题
     private int view;//浏览量
     private float price;//价格
+    private Date date;//上传时间
 
     public int getId() {
         return id;
@@ -68,5 +71,27 @@ public class Goods {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", type='" + type + '\'' +
+                ", description='" + description + '\'' +
+                ", title='" + title + '\'' +
+                ", view=" + view +
+                ", price=" + price +
+                ", date=" + date +
+                '}';
     }
 }

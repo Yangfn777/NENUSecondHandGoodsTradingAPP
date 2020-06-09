@@ -21,4 +21,5 @@ public interface GoodsService {
     public Goods queryId(int id)throws Exception;
     public int addGoods(Goods goods)throws Exception;
     public int updateGoods(Goods goods)throws Exception;
+    public int addView(Goods goods)throws Exception;
 }

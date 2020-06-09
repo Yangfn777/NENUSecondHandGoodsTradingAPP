@@ -49,6 +49,8 @@ public class GoodsController {
     @ResponseBody
     @RequestMapping("/queryId")
     public Goods queryId(int id)throws Exception{
+        Goods goods=goodsService.queryId(id);
+        goodsService.addView(goods);
         return goodsService.queryId(id);
     }
 
