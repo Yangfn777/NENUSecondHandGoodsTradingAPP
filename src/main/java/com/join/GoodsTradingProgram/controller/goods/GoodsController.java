@@ -1,13 +1,16 @@
 package com.join.GoodsTradingProgram.controller.goods;
 
 import com.join.GoodsTradingProgram.entity.goods.Goods;
+import com.join.GoodsTradingProgram.entity.img.Img;
 import com.join.GoodsTradingProgram.service.goodsService.GoodsService;
+import com.join.GoodsTradingProgram.utils.img.ImgUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,11 +25,37 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
+
+
     @ResponseBody
-    @RequestMapping("/addGoods")
-    public int addGoods(Goods goods)throws Exception{
-        return goodsService.addGoods(goods);
+    @RequestMapping(value = "/addGoods",method = RequestMethod.POST)
+    public int addGoods(@RequestParam(value = "file") MultipartFile files[], Goods goods)throws Exception{
+        ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
+        Date date=new Date();
+        goods.setDate(date);
+        if(goodsService.addGoods(goods)==0){
+            return 0;
+
+        }
+        int id=goods.getId();
+        for(MultipartFile file:files){
+            if (file.isEmpty()) {
+                System.out.println("文件为空");
+                break;
+            }
+            String filename=null;
+//            String path="/www/wwwroot/yanglq.xyz/images/userImg/book/";
+//            String picUrl="/img/userImg/book/";
+            String path="e:/yfn/good/";
+            String picUrl="/img/good/";
+            filename=imgUploadUtil.imgUpload(file,path);
+            Img img=new Img(id,picUrl+filename,path+filename);
+            goodsService.addImg(img);
+        }
+        return id;
     }
+
+
 
     @ResponseBody
     @RequestMapping("/updateGoods")
@@ -70,6 +99,18 @@ public class GoodsController {
     @RequestMapping("/deleteGoods")
     public int deleteGoods(int id)throws Exception{
         return goodsService.deleteGoods(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/deleteImg")
+    public int deleteImg(int id)throws Exception{
+        return goodsService.deleteImg(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/listImg")
+    public List<Img> listImg(int id)throws Exception{
+        return goodsService.listImg(id);
     }
 
 

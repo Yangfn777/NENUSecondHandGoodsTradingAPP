@@ -1,7 +1,9 @@
 package com.join.GoodsTradingProgram.service.goodsService.impl;
 
 import com.join.GoodsTradingProgram.entity.goods.Goods;
+import com.join.GoodsTradingProgram.entity.img.Img;
 import com.join.GoodsTradingProgram.mapper.goodsMapper.GoodsMapper;
+import com.join.GoodsTradingProgram.mapper.imgMapper.ImgMapper;
 import com.join.GoodsTradingProgram.service.goodsService.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,9 @@ import java.util.List;
 public class GoodsServiceImpl implements GoodsService {
     @Autowired
     GoodsMapper goodsMapper;
+
+    @Autowired
+    ImgMapper imgMapper;
 
     public int deleteGoods(int id)throws Exception{
         return goodsMapper.deleteGoods(id);
@@ -48,4 +53,14 @@ public class GoodsServiceImpl implements GoodsService {
         goods.setView(goods.getView()+1);
         return goodsMapper.addView(goods);
     }
+    public int addImg(Img img)throws Exception{
+        return imgMapper.addImg(img);
+    }
+    public int deleteImg(int id)throws Exception{
+        return imgMapper.deleteImg(id);
+    }
+    public List<Img> listImg(int gid)throws Exception{
+        return imgMapper.listImg(gid);
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.join.GoodsTradingProgram.service.goodsService;
 
 import com.join.GoodsTradingProgram.entity.goods.Goods;
+import com.join.GoodsTradingProgram.entity.img.Img;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,4 +23,7 @@ public interface GoodsService {
     public int addGoods(Goods goods)throws Exception;
     public int updateGoods(Goods goods)throws Exception;
     public int addView(Goods goods)throws Exception;
+    public int addImg(Img img)throws Exception;
+    public int deleteImg(int id)throws Exception;
+    public List<Img> listImg(int id)throws Exception;
 }

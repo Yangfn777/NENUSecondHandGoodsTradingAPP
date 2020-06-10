@@ -54,7 +54,7 @@
     WHERE id=#{id}
     </delete>
 
-    <insert id="addGoods">
+    <insert id="addGoods" parameterType="com.join.GoodsTradingProgram.entity.goods.Goods" useGeneratedKeys="true"  keyProperty="id">
     INSERT INTO t_goods
     (userId,type,description,view,price)
     VALUES (#{goods.userId},#{goods.type},
