@@ -25,29 +25,28 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
-
-
     @ResponseBody
     @RequestMapping(value = "/addGoods",method = RequestMethod.POST)
     public int addGoods(@RequestParam(value = "file") MultipartFile files[], Goods goods)throws Exception{
         ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
         Date date=new Date();
         goods.setDate(date);
+        goods.setView(0);
         if(goodsService.addGoods(goods)==0){
             return 0;
-
         }
         int id=goods.getId();
+        System.out.println(goods);
         for(MultipartFile file:files){
             if (file.isEmpty()) {
                 System.out.println("文件为空");
                 break;
             }
             String filename=null;
-//            String path="/www/wwwroot/yanglq.xyz/images/userImg/book/";
-//            String picUrl="/img/userImg/book/";
-            String path="e:/yfn/good/";
-            String picUrl="/img/good/";
+//            String path="/www/wwwroot/yanglq.xyz/images/userImg/book/"+id+"_";
+//            String picUrl="/img/userImg/book/"+id+"_";
+            String path="e:/yfn/good/"+id+"_";
+            String picUrl="/img/good/"+id+"_";
             filename=imgUploadUtil.imgUpload(file,path);
             Img img=new Img(id,picUrl+filename,path+filename);
             goodsService.addImg(img);

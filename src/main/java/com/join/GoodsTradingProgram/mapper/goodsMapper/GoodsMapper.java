@@ -21,7 +21,7 @@ public interface GoodsMapper {
      * @return
      * @throws Exception
      */
-    public int addGoods(@Param("goods")Goods goods)throws Exception;
+    public int addGoods(Goods goods)throws Exception;
 
     /**
      * 删除商品

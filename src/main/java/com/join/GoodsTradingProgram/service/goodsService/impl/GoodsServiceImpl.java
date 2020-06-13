@@ -8,6 +8,7 @@ import com.join.GoodsTradingProgram.service.goodsService.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -24,6 +25,12 @@ public class GoodsServiceImpl implements GoodsService {
     ImgMapper imgMapper;
 
     public int deleteGoods(int id)throws Exception{
+        List<Img> imgs=imgMapper.listImg(id);
+        for(Img img:imgs){
+            File file=new File(img.getPath());
+            file.delete();
+            imgMapper.deleteImg(img.getId());
+        }
         return goodsMapper.deleteGoods(id);
     }
 
@@ -40,6 +47,7 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.updateGoods(goods);
     }
     public List<Goods> queryType(String type)throws Exception{
+        System.out.println(type);
         return goodsMapper.queryType(type);
     }
     public List<Goods> queryDes(String des)throws Exception{

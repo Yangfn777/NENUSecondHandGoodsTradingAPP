@@ -22,7 +22,7 @@ public class GoodsTest {
         goods.setUserId(1);
         goods.setView(7);
         goods.setType("衣架");
-        System.out.println(goodsController.addGoods(goods));
+//        System.out.println(goodsController.addGoods(goods));
     }
     @Test
     public void deleteGoods()throws Exception{

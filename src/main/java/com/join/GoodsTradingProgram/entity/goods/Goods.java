@@ -1,5 +1,7 @@
 package com.join.GoodsTradingProgram.entity.goods;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -15,6 +17,7 @@ public class Goods {
     private String title;//标题
     private int view;//浏览量
     private float price;//价格
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date date;//上传时间
 
     public int getId() {
