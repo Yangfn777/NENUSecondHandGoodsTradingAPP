@@ -26,17 +26,8 @@ public class UserTest {
     UserController userController;
 
     @Test
-    public void testAddUser()throws Exception{
-        User user = new User();
-        user.setUsername("newUser");
-        user.setRealname("Liulq");
-        user.setPassword("123");
-        user.setProfession("Math");
-        user.setStuno("2018010281");
-        user.setIntroduction("Hello everyone!");
-        user.setTelnum("18081204998");
-        user.setHeadurl("XXXXXX");
-        System.out.println("测试成功"+userController.addUser(user));
+    public void testlistUser()throws Exception{
+        List list = new ArrayList();
 
     }
 
@@ -49,9 +40,24 @@ public class UserTest {
     }
 
     @Test
-    public void testlistUser()throws Exception{
-        List list = new ArrayList();
+    public void testRegister()throws Exception{
+        User user = new User();
+        user.setUsername("newUser");
+        user.setRealname("Liulq");
+        user.setPassword("123");
+        user.setProfession("Math");
+        user.setStuno("2018010281");
+        user.setIntroduction("Hello everyone!");
+        user.setTelnum("18081204998");
+        user.setHeadurl("XXXXXX");
+        System.out.println(userController.register(user));
 
+    }
+
+    @Test
+    public void testDelUser()throws Exception{
+        int id=5;
+        System.out.println(userController.delUser(id));
     }
 
     @Test
@@ -68,8 +74,17 @@ public class UserTest {
         System.out.println(userController.updateIntro(user));
     }
 
-    public void testDelUser()throws Exception{
-        int id=5;
-        System.out.println(userController.delUser(id));
+    @Test
+    public void testUpdateTel()throws Exception{
+        User user = new User();
+        user.setTelnum("12345678901");
+        System.out.println(userController.updateTel(user));
+    }
+
+    @Test
+    public void testUploadHead()throws Exception{
+        User user = new User();
+        user.setHeadurl("XXXXXX");
+        System.out.println(userController.uploadHead(user));
     }
 }

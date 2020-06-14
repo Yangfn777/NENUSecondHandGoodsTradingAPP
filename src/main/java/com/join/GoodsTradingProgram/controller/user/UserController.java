@@ -74,7 +74,7 @@ public class UserController {
         return b;
     }
 
-    @RequestMapping(value = "updatepwd")
+    @RequestMapping(value = "updatePwd")
     public int updatePwd(User user)throws Exception{
         boolean a = userService.updatePwd(user);
         int b=0;
@@ -104,6 +104,7 @@ public class UserController {
         return b;
     }
 
+    @RequestMapping(value = "uploadHead")
     public int uploadHead(User user)throws Exception{
         boolean a = userService.uploadHead(user);
         int b=0;

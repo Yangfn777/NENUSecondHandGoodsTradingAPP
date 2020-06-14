@@ -6,6 +6,7 @@
         <id property="id" column="id"/>
         <result property="managerName" column="managerName"/>
         <result property="password" column="password"/>
+        <result property="headurl" column="headurl"/>
     </resultMap>
 
     <select id="listManager" resultType="com.join.GoodsTradingProgram.entity.manager.Manager">

@@ -9,6 +9,9 @@
         <result property="password" column="password"/>
         <result property="profession" column="profession"/>
         <result property="stuno" column="stuno"/>
+        <result property="telnum" column="telnum"/>
+        <result property="introduction" column="introduction"/>
+        <result property="headurl" column="headurl"/>
     </resultMap>
 
     <select id="listUser" resultType="com.join.GoodsTradingProgram.entity.user.User">
