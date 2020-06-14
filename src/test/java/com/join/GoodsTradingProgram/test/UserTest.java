@@ -1,13 +1,16 @@
 package com.join.GoodsTradingProgram.test;
 
+import com.join.GoodsTradingProgram.controller.user.UserController;
 import com.join.GoodsTradingProgram.entity.user.User;
-import com.join.GoodsTradingProgram.service.userService.UserService;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,21 +23,7 @@ import java.util.List;
 public class UserTest {
 
     @Autowired
-    UserService userService;
-
-    @Test
-    public void testlistUser()throws Exception{
-
-
-    }
-
-    @Test
-    public void testLogin()throws Exception{
-        User user = new User();
-        user.setUsername("login");
-        user.setPassword("123456");
-        System.out.println(userService.login(user));
-    }
+    UserController userController;
 
     @Test
     public void testAddUser()throws Exception{
@@ -44,6 +33,43 @@ public class UserTest {
         user.setPassword("123");
         user.setProfession("Math");
         user.setStuno("2018010281");
+        user.setIntroduction("Hello everyone!");
+        user.setTelnum("18081204998");
+        user.setHeadurl("XXXXXX");
+        System.out.println("测试成功"+userController.addUser(user));
+
     }
 
+    @Test
+    public void testLogin()throws Exception{
+        User user = new User();
+        user.setUsername("newUser");
+        user.setPassword("123456");
+        System.out.println(userController.login(user));
+    }
+
+    @Test
+    public void testlistUser()throws Exception{
+        List list = new ArrayList();
+
+    }
+
+    @Test
+    public void testUpdatePwd()throws Exception{
+        User user = new User();
+        user.setPassword("654321");
+        System.out.println(userController.updatePwd(user));
+    }
+
+    @Test
+    public void testUpdateIntro()throws Exception{
+        User user = new User();
+        user.setIntroduction("Hello world!");
+        System.out.println(userController.updateIntro(user));
+    }
+
+    public void testDelUser()throws Exception{
+        int id=5;
+        System.out.println(userController.delUser(id));
+    }
 }

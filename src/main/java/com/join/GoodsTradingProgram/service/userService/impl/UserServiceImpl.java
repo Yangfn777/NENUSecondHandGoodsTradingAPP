@@ -48,4 +48,19 @@ public class UserServiceImpl implements UserService {
     public boolean updatePwd(User user) throws Exception {
         return false;
     }
+
+    @Override
+    public boolean updateIntro(User user) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean updateTel(User user) throws Exception {
+        return false;
+    }
+
+    @Override
+    public boolean uploadHead(User user) throws Exception {
+        return false;
+    }
 }

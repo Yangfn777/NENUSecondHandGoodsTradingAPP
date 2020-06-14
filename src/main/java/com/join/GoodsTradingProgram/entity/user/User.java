@@ -13,6 +13,9 @@ public class User {
     private String password;
     private String profession;
     private String stuno;
+    private String telnum;
+    private String introduction;
+    private String headurl;
 
     public int getId() {
         return id;
@@ -60,5 +63,29 @@ public class User {
 
     public void setStuno(String stuno) {
         this.stuno = stuno;
+    }
+
+    public String getTelnum(){
+        return telnum;
+    }
+
+    public void setTelnum(String telnum) {
+        this.telnum = telnum;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getHeadurl() {
+        return headurl;
+    }
+
+    public void setHeadurl(String headurl) {
+        this.headurl = headurl;
     }
 }

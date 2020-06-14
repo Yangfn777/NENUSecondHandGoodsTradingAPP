@@ -32,11 +32,26 @@
     </select>
     <select id="delUser" resultType="com.join.GoodsTradingProgram.entity.user.User">
         DELETE FROM t_user
-        WHERE id=#{user.id}
+        WHERE id=#{id}
     </select>
     <select id="updatePwd" resultType="com.join.GoodsTradingProgram.entity.user.User">
         UPDATE t_user
         SET password=#{user.password}
+        WHERE id=#{user.id}
+    </select>
+    <select id="updateIntro" resultType="com.join.GoodsTradingProgram.entity.user.User">
+        UPDATE t_user
+        SET introdunction=#{user.introdunction}
+        WHERE id=#{user.id}
+    </select>
+    <select id="updateTel" resultType="com.join.GoodsTradingProgram.entity.user.User">
+        UPDATE t_user
+        SET telnum=#{user.telnum}
+        WHERE id=#{user.id}
+    </select>
+    <select id="uploadHead" resultType="com.join.GoodsTradingProgram.entity.user.User">
+        UPDATE t_user
+        SET headurl=#{user.headurl}
         WHERE id=#{user.id}
     </select>
 

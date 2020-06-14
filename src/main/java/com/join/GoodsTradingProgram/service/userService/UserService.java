@@ -16,4 +16,7 @@ public interface UserService {
     public User selectUserMessage(User user) throws Exception;
     public boolean delUser(int id)throws Exception;
     public boolean updatePwd(User user) throws Exception;
+    public boolean updateIntro(User user)throws Exception;
+    public boolean updateTel(User user)throws Exception;
+    public boolean uploadHead(User user)throws Exception;
 }

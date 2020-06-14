@@ -62,6 +62,31 @@ public interface UserMapper {
      */
     public boolean updatePwd(@Param("user")User user)throws Exception;
 
+    /**
+     * 修改个人简介
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    public boolean updateIntro(@Param("user")User user)throws Exception;
+
+    /**
+     * 修改电话号码
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    public boolean updateTel(@Param("user")User user)throws Exception;
+
+    /**
+     * 上传头像
+     * @param id
+     * @param headurl
+     * @return
+     * @throws Exception
+     */
+    public boolean uploadHead(@Param("id")int id,@Param("headurl")String headurl)throws Exception;
+
 //    /**
 //     * 查询
 //     * @return

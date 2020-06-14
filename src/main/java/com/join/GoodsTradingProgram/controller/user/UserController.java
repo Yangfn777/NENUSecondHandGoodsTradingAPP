@@ -83,4 +83,33 @@ public class UserController {
         }
         return b;
     }
+
+    @RequestMapping(value = "updateIntro")
+    public int updateIntro(User user)throws Exception{
+        boolean a = userService.updateIntro(user);
+        int b = 0;
+        if (a == true){
+            b=1;
+        }
+        return b;
+    }
+
+    @RequestMapping(value = "updateTel")
+    public int updateTel(User user)throws Exception{
+        boolean a = userService.updateTel(user);
+        int b=0;
+        if (a == true){
+            b=1;
+        }
+        return b;
+    }
+
+    public int uploadHead(User user)throws Exception{
+        boolean a = userService.uploadHead(user);
+        int b=0;
+        if (a == true){
+            b=1;
+        }
+        return b;
+    }
 }
