@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.join.GoodsTradingProgram.mapper.goodsMapper.GoodsMapper">
+    <resultMap id="goods" type="com.join.GoodsTradingProgram.entity.goods.Goods">
+        <id property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
+    <select id="list" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    </select>
+
+    <select id="queryId" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    where id=#{id}
+    </select>
+
+    <select id="queryType" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    where type=#{type}
+    </select>
+
+    <select id="queryDes" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    where description like '%${des}%'
+    </select>
+
+    <select id="listGoods" resultType="com.join.GoodsTradingProgram.entity.goods.Goods">
+    SELECT *
+    FROM t_goods
+    where userId=#{id}
+    </select>
+
+    <update id="updateGoods">
+    UPDATE t_goods
+    SET type=#{goods.type},description=#{goods.description},price=#{goods.price},title=#{goods.title}
+    WHERE id=#{goods.id}
+    </update>
+
+    <update id="addView">
+    UPDATE t_goods
+    SET view=#{goods.view}
+    WHERE id=#{goods.id}
+    </update>
+
+    <delete id="deleteGoods">
+    DELETE FROM t_goods
+    WHERE id=#{id}
+    </delete>
+
+    <insert id="addGoods" parameterType="com.join.GoodsTradingProgram.entity.goods.Goods" useGeneratedKeys="true"  keyProperty="id">
+    INSERT INTO t_goods
+    (userId,type,description,title,view,price,date)
+    VALUES (#{userId},#{type},
+    #{description},#{title},#{view},#{price},#{date})
+    </insert>
+</mapper>
