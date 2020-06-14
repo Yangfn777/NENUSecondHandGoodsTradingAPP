@@ -10,6 +10,7 @@ public class Manager {
     private int id;
     private String managerName;
     private String password;
+    private String headurl;
 
     public int getId() {
         return id;
@@ -33,5 +34,13 @@ public class Manager {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getHeadurl() {
+        return headurl;
+    }
+
+    public void setHeadurl(String headurl) {
+        this.headurl = headurl;
     }
 }
