@@ -11,7 +11,8 @@
 			"style":{
 				"app-plus":{
 					"titleNView":false,
-					"bounce":"none"
+					"bounce":"none",
+					"navigationStyle":"custom"
 				}
 			}
 		},
@@ -24,9 +25,56 @@
 				}
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/userInfo/userInfo",
+            "style" : {
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "个人信息",
+				"navigationBarBackgroundColor": "#4e86ff",
+				"backgroundColor": "#4e86ff"
+			}
+        },
+		{
+			"path":"pages/buying/buying",
+            "style" : {
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "我的购买",
+				"navigationBarBackgroundColor": "#4e86ff",
+				"backgroundColor": "#4e86ff"
+			}
+		},
+		{
+			"path":"pages/collect/collect",
+			"style":{
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "我的收藏",
+				"navigationBarBackgroundColor": "#4e86ff",
+				"backgroundColor": "#4e86ff"
+			}
+		},
+		{
+			"path":"pages/feedback/feedback",
+			"style":{
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "我的反馈",
+				"navigationBarBackgroundColor": "#4e86ff",
+				"backgroundColor": "#4e86ff"
+			}
+		},
+		{
+			"path":"pages/publish/publish",
+			"style":{
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "我的发布",
+				"navigationBarBackgroundColor": "#4e86ff",
+				"backgroundColor": "#4e86ff"
+			}
+		}
+		
+		
+    ],
 	"globalStyle": {
-		"navigationBarTextStyle": "#ffffff",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "东师二手市场",
 		"navigationBarBackgroundColor": "#4e86ff",
 		"backgroundColor": "#4e86ff"
