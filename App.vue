@@ -23,4 +23,5 @@
 	@import url("/common/mixin/icon.css");
 	/* 类似bootstrap的UI库 */
 	@import url("/common/mixin/zcm-main.css");
+	@import url("/common/icon.css");
 </style>

@@ -1,8 +1,154 @@
 <template>
+	<view style="box-sizing: border-box;padding: 10px;">
+		<view class="uni-textarea">
+			<textarea @blur="bindTextAreaBlur" style="height: 80px;" placeholder="请输入商品描述..." />
+			<view class="imgList">
+				<text class="title">图片上传</text>
+				<text class="num">{{imgList.length?imgList.length:0}}/4</text>
+				<view class="d-flex flex-nowrap j-start" style="margin-top: 10px;">
+					<view class="img" v-for="(item,index) in imgList" :key="item">
+						<image style="width: 100%;height: 100%;" :src="item" mode=""></image>
+						<text class="cuIcon-close"
+							@tap="deleteImg(index)"
+						></text>
+					</view>
+					<view class="img" v-show="imgList.length<4"
+						@tap="chooseImg"
+					>
+						<text class="cuIcon-add"
+						></text>
+					</view>
+				</view>
+				
+			</view>
+			<view class="item d-flex flex-nowrap j-start">
+				<view class="title">商品名称：</view>
+				<input type="text" value="" placeholder="请输入商品名称..." />
+			</view>
+			<view class="item d-flex flex-nowrap j-start">
+				<view class="title">联系方式：</view>
+				<input type="text" value="" placeholder="请输入联系方式..." />
+			</view>
+			<view class="item d-flex flex-nowrap j-start">
+				<view class="title">商品类型：</view>
+				<view class="con">
+					<view class="uni-title" @tap="changeState">{{form.state===-1?"请选择商品类型":stateList[form.state]}}</view>
+				</view>
+				
+			</view>
+			<view class="item d-flex flex-nowrap j-start">
+				<view class="title">商品价格：</view>
+				<input type="text" value="" placeholder="请输入商品价格..." />
+			</view>
+		</view>
+		<uniPopup ref="popupState" type="bottom">
+			<view class="" style="background-color: #fff;position: relative;bottom: 50px;">
+				<picker-view style="height: 150px;width: 750upx;" :indicator-style="indicatorStyle" :value="[0]" @change="bindChange">
+					<picker-view-column>
+						<view style="text-align: center;" class="item" v-for="(item,index) in stateList" :key="index">{{item}}</view>
+					</picker-view-column>
+				</picker-view>
+			</view>
+		</uniPopup>
+		
+	</view>
 </template>
 
 <script>
+	import {uniPopup} from '@dcloudio/uni-ui'
+	export default {
+		data() {
+			return {
+				imgList:[],
+				fileList:[],
+				stateList:["书本","衣服","生活用品","娱乐用品"],
+				form:{
+					state:-1
+				},
+				indicatorStyle: `height: ${Math.round(uni.getSystemInfoSync().screenWidth/(750/100))}px;`
+			}
+		},
+		methods: {
+			chooseImg(){
+				uni.chooseImage({
+				    count: 1, //默认9
+				    sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				    sourceType: ['album'], //从相册选择
+				    success: (res)=>{
+				        this.imgList.push(res.tempFilePaths[0]);
+						this.fileList.push(res.tempFiles[0])
+				    }
+				});
+			},
+			deleteImg(index){
+				if(confirm("确定要删除吗")){
+					this.imgList.splice(index,1);
+					this.fileList.splice(index,1);
+				}
+			},
+			changeState(){
+				this.$refs.popupState.open()
+			},
+			bindChange(e){
+				this.form.state = e.target.value[0]
+			}
+		},
+		components:{
+			uniPopup
+		}
+	}
 </script>
 
-<style>
+<style lang="less" scoped>
+	.imgList{
+		width: 100%;
+		box-sizing: border-box;
+		padding: 10rpx 10px;
+		.num{
+			float: right;
+			color: #999;
+		}
+		
+		.img{
+			position: relative;
+			margin-right: 10upx;
+			width: 170upx;
+			height: 170upx;
+			border: 1px solid #999;
+			border-radius: 5px;
+			overflow: hidden;
+			color: #999;
+			line-height: 170upx;
+			text-align: center;
+			font-size: 170upx;
+			.cuIcon-close{
+				display: block;
+				position: absolute;
+				top: -10px;
+				right: -10px;
+				width: 25px;
+				height: 25px;
+				line-height: 35px;
+				text-align: left;
+				background-color: rgba(0,0,0,0.6);
+				color: #fff;
+				border-radius: 50%;
+				font-size: 14px;
+			}
+		}
+	}
+	.item{
+		padding: 0 10px;
+		height: 50px;
+		line-height: 50px;
+		border-bottom: 1px solid #ddd;
+		.title{
+			line-height: 50px;
+		}
+		input,.con{
+			height: 100%;
+			width: 70%;
+			padding: 0 10px;
+		}
+	}
 </style>
