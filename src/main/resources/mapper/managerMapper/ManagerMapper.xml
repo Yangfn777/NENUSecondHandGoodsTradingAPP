@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.join.GoodsTradingProgram.mapper.managerMapper.ManagerMapper">
+    <resultMap id="manager" type="com.join.GoodsTradingProgram.entity.manager.Manager">
+        <id property="id" column="id"/>
+        <result property="managerName" column="managerName"/>
+        <result property="password" column="password"/>
+        <result property="headurl" column="headurl"/>
+    </resultMap>
+
+    <select id="listManager" resultType="com.join.GoodsTradingProgram.entity.manager.Manager">
+        SELECT *
+        FROM t_manager
+    </select>
+    <select id="login" resultType="com.join.GoodsTradingProgram.entity.manager.Manager">
+        SELECT *
+        FROM t_manager
+        WHERE managerName=#{manager.managerName} AND password=#{manager.password}
+    </select>
+    <select id="addManager" resultType="com.join.GoodsTradingProgram.entity.manager.Manager">
+        INSERT INTO t_manager(managerName,password)
+        VALUES (#{manager.managerName},#{manager.password})
+    </select>
+    <select id="updateManager" resultType="com.join.GoodsTradingProgram.entity.manager.Manager">
+        UPDATE t_manager
+        SET password=#{manager.password}
+        WHERE id=#{manager.id}
+    </select>
+</mapper>
