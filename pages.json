@@ -23,10 +23,14 @@
 					"bounce":"none"
 				}
 			}
+		},
+		{
+			"path":"pages/detail/detail",
+			"style":{
+			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "#ffffff",
 		"navigationBarTitleText": "东师二手市场",
 		"navigationBarBackgroundColor": "#4e86ff",
 		"backgroundColor": "#4e86ff"
