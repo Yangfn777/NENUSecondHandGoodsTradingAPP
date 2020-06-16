@@ -1,18 +1,21 @@
 package com.join.GoodsTradingProgram.entity.user;
 
 /**
- * @Author: Yangfn
+ * @Author: Liulq
  * @Description:
  * @Date: 21:28 2020/5/9
  */
 public class User {
 
     private int id;
+    private String realname;
     private String username;
     private String password;
-    private String sex;
-    private String headUrl;
-    private String path;
+    private String profession;
+    private String stuno;
+    private String telnum;
+    private String introduction;
+    private String headurl;
 
     public int getId() {
         return id;
@@ -20,6 +23,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
     public String getUsername() {
@@ -38,27 +49,43 @@ public class User {
         this.password = password;
     }
 
-    public String getSex() {
-        return sex;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
-    public String getHeadUrl() {
-        return headUrl;
+    public String getStuno() {
+        return stuno;
     }
 
-    public void setHeadUrl(String headUrl) {
-        this.headUrl = headUrl;
+    public void setStuno(String stuno) {
+        this.stuno = stuno;
     }
 
-    public String getPath() {
-        return path;
+    public String getTelnum(){
+        return telnum;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setTelnum(String telnum) {
+        this.telnum = telnum;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getHeadurl() {
+        return headurl;
+    }
+
+    public void setHeadurl(String headurl) {
+        this.headurl = headurl;
     }
 }
