@@ -71,6 +71,14 @@ export default {
 			uni.navigateTo({
 				url:"../detail/detail?id="+id
 			})
+		},
+		search(e){
+			uni.navigateTo({
+				url:"../search/search?content="+e.value
+			})
+		},
+		input(e){
+			console.log(e);
 		}
 	}
 };

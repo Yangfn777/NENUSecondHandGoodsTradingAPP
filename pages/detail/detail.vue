@@ -8,9 +8,9 @@
 					<text>浏览人数{{ good.num }}人</text>
 				</view>
 			</view>
-			<view class="" style="width: 20%;">
+			<view class="" style="width: 20%;" @click="isStar">
 				<image src="../../static/images/shoucang.png" mode="widthFix" v-if="star" style="width: 60rpx;"></image>
-				<image src="../../static/images/star-opp.png" mode="widthFix" v-else></image>
+				<image src="../../static/images/star-opp.png" mode="widthFix" v-else style="width: 60rpx;"></image>
 			</view>
 		</view>
 		<view class="" style="padding:16rpx">
@@ -84,7 +84,11 @@ export default {
 			}
 		};
 	},
-	methods: {}
+	methods: {
+		isStar:function(e){
+			this.star=!this.star;
+		}
+	}
 };
 </script>
 

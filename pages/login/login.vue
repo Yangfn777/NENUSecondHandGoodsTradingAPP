@@ -1,7 +1,7 @@
 <template>
 	<view class="d-flex j-center flex-wrap" style="margin-top:100rpx;width: 100%;">
 		<view class="">
-			<image src="../../static/images/bg.jpg" class="rounded-circle" mode="" style="width:200rpx;height:200rpx;"></image>
+			<image src="../../static/images/14.jpg" class="rounded-circle" mode="" style="width:200rpx;height:200rpx;"></image>
 		</view>
 		<view class="d-flex j-sb font-md" style="width:78%;line-height:80rpx;height:80rpx;">
 			<view :class="{'show': hover}" @click="register">学生注册</view>
