@@ -6,6 +6,7 @@ import com.join.GoodsTradingProgram.entity.user.User;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Rollback(value = false)
 public class UserTest {
 
     @Autowired
@@ -42,11 +44,11 @@ public class UserTest {
     @Test
     public void testRegister()throws Exception{
         User user = new User();
-        user.setUsername("newUser");
-        user.setRealname("Liulq");
-        user.setPassword("123");
+        user.setRealname("Llq");
+        user.setUsername("new");
+        user.setPassword("123321");
         user.setProfession("Math");
-        user.setStuno("2018010281");
+        user.setStuno("2018010280");
         user.setIntroduction("Hello everyone!");
         user.setTelnum("18081204998");
         user.setHeadurl("XXXXXX");
@@ -56,35 +58,39 @@ public class UserTest {
 
     @Test
     public void testDelUser()throws Exception{
-        int id=5;
+        int id=2;
         System.out.println(userController.delUser(id));
     }
 
     @Test
     public void testUpdatePwd()throws Exception{
         User user = new User();
+        int id = user.getId();
         user.setPassword("654321");
-        System.out.println(userController.updatePwd(user));
+        System.out.println(userController.updatePwd(id));
     }
 
     @Test
     public void testUpdateIntro()throws Exception{
         User user = new User();
+        int id = user.getId();
         user.setIntroduction("Hello world!");
-        System.out.println(userController.updateIntro(user));
+        System.out.println(userController.updateIntro(id));
     }
 
     @Test
     public void testUpdateTel()throws Exception{
         User user = new User();
+        int id = user.getId();
         user.setTelnum("12345678901");
-        System.out.println(userController.updateTel(user));
+        System.out.println(userController.updateTel(id));
     }
 
     @Test
     public void testUploadHead()throws Exception{
         User user = new User();
+        int id = user.getId();
         user.setHeadurl("XXXXXX");
-        System.out.println(userController.uploadHead(user));
+        System.out.println(userController.uploadHead(id));
     }
 }
