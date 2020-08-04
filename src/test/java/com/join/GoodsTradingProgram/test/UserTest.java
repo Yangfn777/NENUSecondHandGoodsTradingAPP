@@ -65,34 +65,13 @@ public class UserTest {
     }
 
     @Test
-    public void testUpdatePwd()throws Exception{
+    public void testUpdateUser()throws Exception{
         User user = new User();
         user.setId(1);
         user.setPassword("654321");
-        System.out.println(userController.updatePwd(user));
-    }
-
-    @Test
-    public void testUpdateIntro()throws Exception{
-        User user = new User();
-        user.setId(1);
         user.setIntroduction("Hello world!");
-        System.out.println(userController.updateIntro(user));
-    }
-
-    @Test
-    public void testUpdateTel()throws Exception{
-        User user = new User();
-        user.setId(1);
-        user.setTelnum("12");
-        System.out.println(userController.updateTel(user));
-    }
-
-    @Test
-    public void testUploadHead()throws Exception{
-        User user = new User();
-        user.setId(1);
+        user.setTelnum("1234");
         user.setHeadurl("XXXXXX");
-        System.out.println(userController.uploadHead(user));
+        System.out.println(userController.updateUser(user));
     }
 }

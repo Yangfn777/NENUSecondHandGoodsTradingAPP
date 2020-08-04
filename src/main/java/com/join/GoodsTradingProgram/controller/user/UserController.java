@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -22,11 +23,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @ResponseBody
     @RequestMapping(value = "/list")
     public List<User> listUser()throws Exception{
         return userService.listUser();
     }
 
+    @ResponseBody
     @RequestMapping(value = "/login")
     public int login(User user)throws Exception{
         User user1 = userService.login(user);
@@ -40,6 +43,7 @@ public class UserController {
         }
     }
 
+    @ResponseBody
     @RequestMapping(value = "/register")
     public int register(User user)throws Exception{
         User user1 = userService.selectUserMessage(user);
@@ -53,33 +57,15 @@ public class UserController {
         return b;
     }
 
+    @ResponseBody
     @RequestMapping(value = "/delUser")
-    public Integer delUser(int id)throws Exception{
-        Integer a = userService.delUser(id);
-        return a;
+    public int delUser(int id)throws Exception{
+        return userService.delUser(id);
     }
 
-    @RequestMapping(value = "/updatePwd")
-    public Integer updatePwd(User user)throws Exception{
-        Integer a = userService.updatePwd(user);
-        return a;
-    }
-
-    @RequestMapping(value = "updateIntro")
-    public Integer updateIntro(User user)throws Exception{
-        Integer a = userService.updateIntro(user);
-        return a;
-    }
-
-    @RequestMapping(value = "updateTel")
-    public Integer updateTel(User user)throws Exception{
-        Integer a = userService.updateTel(user);
-        return a;
-    }
-
-    @RequestMapping(value = "uploadHead")
-    public Integer uploadHead(User user)throws Exception{
-        Integer a = userService.uploadHead(user);
-        return a;
+    @ResponseBody
+    @RequestMapping(value = "/updateUser")
+    public int updateUser(User user)throws Exception{
+        return userService.updateUser(user);
     }
 }

@@ -26,8 +26,7 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public Manager login(Manager manager) throws Exception {
-        Manager a = managerMapper.login(manager);
-        return a;
+        return managerMapper.login(manager);
     }
 
     /**
@@ -37,9 +36,8 @@ public class ManagerServiceImpl implements ManagerService {
      * @throws Exception
      */
     @Override
-    public Integer addManager(Manager manager) throws Exception {
-        Integer a = managerMapper.addManager(manager);
-        return a;
+    public int addManager(Manager manager) throws Exception {
+        return managerMapper.addManager(manager);
     }
 
     /**
@@ -49,9 +47,8 @@ public class ManagerServiceImpl implements ManagerService {
      * @throws Exception
      */
     @Override
-    public Integer updateManager(Manager manager) throws Exception {
-        Integer a = managerMapper.updateManager(manager);
-        return a;
+    public int updateManager(Manager manager) throws Exception {
+        return managerMapper.updateManager(manager);
     }
 
     /**

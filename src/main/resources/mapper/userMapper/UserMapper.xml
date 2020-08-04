@@ -24,39 +24,24 @@
         FROM t_user
         WHERE username=#{user.username} AND password=#{user.password}
     </select>
-    <select id="register" resultType="java.lang.Integer">
+    <insert id="register" parameterType="com.join.GoodsTradingProgram.entity.user.User" useGeneratedKeys="true"  keyProperty="id">
         INSERT INTO t_user(realname,username,password,profession,stuno,introduction,telnum,headurl)
         VALUES (#{user.realname},#{user.username},#{user.password},#{user.profession},#{user.stuno},#{user.introduction},#{user.telnum},#{user.headurl})
-    </select>
+    </insert>
     <select id="selectUserMessage" resultType="com.join.GoodsTradingProgram.entity.user.User">
         SELECT *
         FROM t_user
         WHERE realname=#{user.realname} AND stuno=#{user.stuno}
     </select>
-    <select id="delUser" resultType="java.lang.Integer">
+    <delete id="delUser">
         DELETE FROM t_user
         WHERE id=#{id}
-    </select>
-    <select id="updatePwd" resultType="java.lang.Integer">
+    </delete>
+    <update id="updateUser">
         UPDATE t_user
-        SET password=#{user.password}
+        SET password=#{user.password},introduction=#{user.introduction},telnum=#{user.telnum},headurl=#{user.headurl}
         WHERE id=#{user.id}
-    </select>
-    <select id="updateIntro" resultType="java.lang.Integer">
-        UPDATE t_user
-        SET introdunction=#{user.introdunction}
-        WHERE id=#{user.id}
-    </select>
-    <select id="updateTel" resultType="java.lang.Integer">
-        UPDATE t_user
-        SET telnum=#{user.telnum}
-        WHERE id=#{user.id}
-    </select>
-    <select id="uploadHead" resultType="java.lang.Integer">
-        UPDATE t_user
-        SET headurl=#{user.headurl}
-        WHERE id=#{user.id}
-    </select>
+    </update>
 
 
     <!--<select id="listFeelBack" resultType="feelBack">-->

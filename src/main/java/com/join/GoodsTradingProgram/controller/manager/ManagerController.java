@@ -25,14 +25,13 @@ public class ManagerController {
     @Autowired
     private ManagerService managerService;
 
-    private UserService userService;
-
     @ResponseBody
     @RequestMapping(value = "/listManager")
     public List<Manager> ListManager()throws Exception{
         return managerService.ListManager();
     }
 
+    @ResponseBody
     @RequestMapping(value = "/login")
     public int login(Manager manager)throws Exception{
         Manager manager1 = managerService.login(manager);
@@ -46,13 +45,15 @@ public class ManagerController {
         }
     }
 
+    @ResponseBody
     @RequestMapping(value = "/addManager")
-    public Integer addManager(Manager manager)throws Exception{
+    public int addManager(Manager manager)throws Exception{
         return managerService.addManager(manager);
     }
 
+    @ResponseBody
     @RequestMapping(value = "/updateManager")
-    public Integer updateManager(Manager manager)throws Exception{
+    public int updateManager(Manager manager)throws Exception{
         return managerService.updateManager(manager);
     }
 }

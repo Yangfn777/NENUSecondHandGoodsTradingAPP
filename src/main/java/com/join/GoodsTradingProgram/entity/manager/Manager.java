@@ -43,4 +43,14 @@ public class Manager {
     public void setHeadurl(String headurl) {
         this.headurl = headurl;
     }
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "id='" + id + '\'' +
+                ", managerName='" + managerName + '\'' +
+                ", password='" + password + '\'' +
+                ", headurl='" + headurl + '\'' +
+                '}';
+    }
 }

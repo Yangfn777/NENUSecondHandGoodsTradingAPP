@@ -13,9 +13,9 @@ import java.util.List;
 public interface ManagerService {
     public Manager login(Manager manager)throws Exception;
 
-    public Integer addManager(Manager manager)throws Exception;
+    public int addManager(Manager manager)throws Exception;
 
-    public Integer updateManager(Manager manager)throws Exception;
+    public int updateManager(Manager manager)throws Exception;
 
     public List<Manager> ListManager()throws Exception;
 }

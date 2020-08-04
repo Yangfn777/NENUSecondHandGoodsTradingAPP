@@ -30,7 +30,7 @@ public interface ManagerMapper {
      * @return
      * @throws Exception
      */
-    public Integer addManager(@Param("manager")Manager manager)throws Exception;
+    public int addManager(@Param("manager")Manager manager)throws Exception;
 
     /**
      * 修改个人信息
@@ -38,7 +38,7 @@ public interface ManagerMapper {
      * @return
      * @throws Exception
      */
-    public Integer updateManager(@Param("manager")Manager manager)throws Exception;
+    public int updateManager(@Param("manager")Manager manager)throws Exception;
     /**
      * 列出所有管理者(查）
      * @return

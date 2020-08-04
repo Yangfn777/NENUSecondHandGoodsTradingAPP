@@ -12,11 +12,8 @@ import java.util.List;
 public interface UserService {
     public List<User> listUser() throws Exception;
     public User login(User user) throws Exception;
-    public Integer register(User user) throws Exception;
+    public int register(User user) throws Exception;
     public User selectUserMessage(User user) throws Exception;
-    public Integer delUser(int id)throws Exception;
-    public Integer updatePwd(User user) throws Exception;
-    public Integer updateIntro(User user)throws Exception;
-    public Integer updateTel(User user)throws Exception;
-    public Integer uploadHead(User user)throws Exception;
+    public int delUser(int id)throws Exception;
+    public int updateUser(User user) throws Exception;
 }

@@ -21,55 +21,31 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> listUser() throws Exception {
-        List<User> list = userMapper.listUser();
-        return list;
+        return userMapper.listUser();
     }
 
     @Override
     public User login(User user) throws Exception {
-        User a = userMapper.login(user);
-        return a;
+        return userMapper.login(user);
     }
 
     @Override
-    public Integer register(User user) throws Exception {
-        Integer a = userMapper.register(user);
-        return a;
+    public int register(User user) throws Exception {
+        return userMapper.register(user);
     }
 
     @Override
     public User selectUserMessage(User user) throws Exception {
-        User u1 = userMapper.selectUserMessage(user);
-        return u1;
+        return userMapper.selectUserMessage(user);
     }
 
     @Override
-    public Integer delUser(int id) throws Exception {
-        Integer a = userMapper.delUser(id);
-        return a;
+    public int delUser(int id) throws Exception {
+        return userMapper.delUser(id);
     }
 
     @Override
-    public Integer updatePwd(User user) throws Exception {
-        Integer a = userMapper.updatePwd(user);
-        return a;
-    }
-
-    @Override
-    public Integer updateIntro(User user) throws Exception {
-        Integer a = userMapper.updateIntro(user);
-        return a;
-    }
-
-    @Override
-    public Integer updateTel(User user) throws Exception {
-        Integer a = userMapper.updateTel(user);
-        return a;
-    }
-
-    @Override
-    public Integer uploadHead(User user) throws Exception {
-        Integer a = userMapper.uploadHead(user);
-        return a;
+    public int updateUser(User user) throws Exception {
+        return userMapper.updateUser(user);
     }
 }
