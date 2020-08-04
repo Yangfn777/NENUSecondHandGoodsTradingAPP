@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean register(User user) throws Exception {
-        boolean a = userMapper.register(user);
+    public Integer register(User user) throws Exception {
+        Integer a = userMapper.register(user);
         return a;
     }
 
@@ -44,32 +44,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean delUser(int id) throws Exception {
-        boolean a = userMapper.delUser(id);
+    public Integer delUser(int id) throws Exception {
+        Integer a = userMapper.delUser(id);
         return a;
     }
 
     @Override
-    public boolean updatePwd(int id) throws Exception {
-        boolean a = userMapper.updatePwd(id);
+    public Integer updatePwd(User user) throws Exception {
+        Integer a = userMapper.updatePwd(user);
         return a;
     }
 
     @Override
-    public boolean updateIntro(int id) throws Exception {
-        boolean a = userMapper.updateIntro(id);
+    public Integer updateIntro(User user) throws Exception {
+        Integer a = userMapper.updateIntro(user);
         return a;
     }
 
     @Override
-    public boolean updateTel(int id) throws Exception {
-        boolean a = userMapper.updateTel(id);
+    public Integer updateTel(User user) throws Exception {
+        Integer a = userMapper.updateTel(user);
         return a;
     }
 
     @Override
-    public boolean uploadHead(int id) throws Exception {
-        boolean a = userMapper.uploadHead(id);
+    public Integer uploadHead(User user) throws Exception {
+        Integer a = userMapper.uploadHead(user);
         return a;
     }
 }

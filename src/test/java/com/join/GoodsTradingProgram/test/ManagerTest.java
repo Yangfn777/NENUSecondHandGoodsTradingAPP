@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ManagerTest {
 
     @Autowired
-    ManagerController managerController;
+    ManagerService managerService;
 
     @Test
     public void ListAllTest()throws Exception{
@@ -28,14 +28,22 @@ public class ManagerTest {
         Manager manager = new Manager();
         manager.setManagerName("manager1");
         manager.setPassword("123456");
-        System.out.println(managerController.login(manager));
+        System.out.println(managerService.login(manager));
     }
 
     @Test
     public void testAddManager()throws Exception{
         Manager manager = new Manager();
-        manager.setManagerName("newManager");
-        manager.setPassword("123");
-        System.out.println(managerController.addManager(manager));
+        manager.setManagerName("llq");
+        manager.setPassword("admin");
+        System.out.println(managerService.addManager(manager));
+    }
+
+    @Test
+    public void testUpdateManager() throws Exception{
+        Manager manager = new Manager();
+        manager.setId(3);
+        manager.setPassword("123456");
+        System.out.println(managerService.updateManager(manager));
     }
 }

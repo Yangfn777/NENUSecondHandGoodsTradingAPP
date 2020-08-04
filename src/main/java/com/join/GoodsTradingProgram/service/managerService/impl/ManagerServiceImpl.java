@@ -1,7 +1,6 @@
 package com.join.GoodsTradingProgram.service.managerService.impl;
 
 import com.join.GoodsTradingProgram.entity.manager.Manager;
-import com.join.GoodsTradingProgram.entity.user.User;
 import com.join.GoodsTradingProgram.mapper.managerMapper.ManagerMapper;
 import com.join.GoodsTradingProgram.service.managerService.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,8 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public Manager login(Manager manager) throws Exception {
-        return null;
+        Manager a = managerMapper.login(manager);
+        return a;
     }
 
     /**
@@ -37,8 +37,9 @@ public class ManagerServiceImpl implements ManagerService {
      * @throws Exception
      */
     @Override
-    public boolean addManager(Manager manager) throws Exception {
-        return false;
+    public Integer addManager(Manager manager) throws Exception {
+        Integer a = managerMapper.addManager(manager);
+        return a;
     }
 
     /**
@@ -48,8 +49,9 @@ public class ManagerServiceImpl implements ManagerService {
      * @throws Exception
      */
     @Override
-    public boolean updateManager(Manager manager) throws Exception {
-        return false;
+    public Integer updateManager(Manager manager) throws Exception {
+        Integer a = managerMapper.updateManager(manager);
+        return a;
     }
 
     /**
@@ -59,6 +61,7 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public List<Manager> ListManager() throws Exception {
-        return null;
+        List<Manager> list = managerMapper.listManager();
+        return list;
     }
 }

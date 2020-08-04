@@ -24,7 +24,7 @@
         FROM t_user
         WHERE username=#{user.username} AND password=#{user.password}
     </select>
-    <select id="register" resultType="com.join.GoodsTradingProgram.entity.user.User">
+    <select id="register" resultType="java.lang.Integer">
         INSERT INTO t_user(realname,username,password,profession,stuno,introduction,telnum,headurl)
         VALUES (#{user.realname},#{user.username},#{user.password},#{user.profession},#{user.stuno},#{user.introduction},#{user.telnum},#{user.headurl})
     </select>
@@ -33,26 +33,26 @@
         FROM t_user
         WHERE realname=#{user.realname} AND stuno=#{user.stuno}
     </select>
-    <select id="delUser" resultType="com.join.GoodsTradingProgram.entity.user.User">
+    <select id="delUser" resultType="java.lang.Integer">
         DELETE FROM t_user
-        WHERE id=#{user.id}
+        WHERE id=#{id}
     </select>
-    <select id="updatePwd" resultType="com.join.GoodsTradingProgram.entity.user.User">
+    <select id="updatePwd" resultType="java.lang.Integer">
         UPDATE t_user
         SET password=#{user.password}
         WHERE id=#{user.id}
     </select>
-    <select id="updateIntro" resultType="com.join.GoodsTradingProgram.entity.user.User">
+    <select id="updateIntro" resultType="java.lang.Integer">
         UPDATE t_user
         SET introdunction=#{user.introdunction}
         WHERE id=#{user.id}
     </select>
-    <select id="updateTel" resultType="com.join.GoodsTradingProgram.entity.user.User">
+    <select id="updateTel" resultType="java.lang.Integer">
         UPDATE t_user
         SET telnum=#{user.telnum}
         WHERE id=#{user.id}
     </select>
-    <select id="uploadHead" resultType="com.join.GoodsTradingProgram.entity.user.User">
+    <select id="uploadHead" resultType="java.lang.Integer">
         UPDATE t_user
         SET headurl=#{user.headurl}
         WHERE id=#{user.id}

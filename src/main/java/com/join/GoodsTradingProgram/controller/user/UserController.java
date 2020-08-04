@@ -46,8 +46,8 @@ public class UserController {
         User user1 = userService.selectUserMessage(user);
         int b=0;
         if (user1 == null){
-            boolean a = userService.register(user);
-            if (a == true){
+            Integer a = userService.register(user);
+            if (a == 1){
                 b=1;
             }
         }
@@ -56,49 +56,49 @@ public class UserController {
 
     @RequestMapping(value = "delUser")
     public int delUser(int id)throws Exception{
-        boolean a = userService.delUser(id);
+        Integer a = userService.delUser(id);
         int b=0;
-        if (a == true){
+        if (a == 1){
             b=1;
         }
         return b;
     }
 
     @RequestMapping(value = "updatePwd")
-    public int updatePwd(int id)throws Exception{
-        boolean a = userService.updatePwd(id);
+    public int updatePwd(User user)throws Exception{
+        Integer a = userService.updatePwd(user);
         int b=0;
-        if (a == true){
+        if (a == 1){
             b=1;
         }
         return b;
     }
 
     @RequestMapping(value = "updateIntro")
-    public int updateIntro(int id)throws Exception{
-        boolean a = userService.updateIntro(id);
+    public int updateIntro(User user)throws Exception{
+        Integer a = userService.updateIntro(user);
         int b = 0;
-        if (a == true){
+        if (a == 1){
             b=1;
         }
         return b;
     }
 
     @RequestMapping(value = "updateTel")
-    public int updateTel(int id)throws Exception{
-        boolean a = userService.updateTel(id);
+    public int updateTel(User user)throws Exception{
+        Integer a = userService.updateTel(user);
         int b=0;
-        if (a == true){
+        if (a == 1){
             b=1;
         }
         return b;
     }
 
     @RequestMapping(value = "uploadHead")
-    public int uploadHead(int id)throws Exception{
-        boolean a = userService.uploadHead(id);
+    public int uploadHead(User user)throws Exception{
+        Integer a = userService.uploadHead(user);
         int b=0;
-        if (a == true){
+        if (a == 1){
             b=1;
         }
         return b;
