@@ -21,46 +21,55 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> listUser() throws Exception {
-        return null;
+        List<User> list = userMapper.listUser();
+        return list;
     }
 
     @Override
     public User login(User user) throws Exception {
-        return null;
+        User a = userMapper.login(user);
+        return a;
     }
 
     @Override
-    public boolean addUser(User user) throws Exception {
-        return false;
+    public boolean register(User user) throws Exception {
+        boolean a = userMapper.register(user);
+        return a;
     }
 
     @Override
     public User selectUserMessage(User user) throws Exception {
-        return null;
+        User u1 = userMapper.selectUserMessage(user);
+        return u1;
     }
 
     @Override
     public boolean delUser(int id) throws Exception {
-        return false;
+        boolean a = userMapper.delUser(id);
+        return a;
     }
 
     @Override
-    public boolean updatePwd(User user) throws Exception {
-        return false;
+    public boolean updatePwd(int id) throws Exception {
+        boolean a = userMapper.updatePwd(id);
+        return a;
     }
 
     @Override
-    public boolean updateIntro(User user) throws Exception {
-        return false;
+    public boolean updateIntro(int id) throws Exception {
+        boolean a = userMapper.updateIntro(id);
+        return a;
     }
 
     @Override
-    public boolean updateTel(User user) throws Exception {
-        return false;
+    public boolean updateTel(int id) throws Exception {
+        boolean a = userMapper.updateTel(id);
+        return a;
     }
 
     @Override
-    public boolean uploadHead(User user) throws Exception {
-        return false;
+    public boolean uploadHead(int id) throws Exception {
+        boolean a = userMapper.uploadHead(id);
+        return a;
     }
 }

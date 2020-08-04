@@ -36,7 +36,7 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public boolean addUser(@Param("user")User user)throws Exception;
+    public boolean register(@Param("user")User user)throws Exception;
 
     /**
      * 查找user的信息
@@ -56,36 +56,35 @@ public interface UserMapper {
 
     /**
      * 修改密码
-     * @param user
+     * @param id
      * @return
      * @throws Exception
      */
-    public boolean updatePwd(@Param("user")User user)throws Exception;
+    public boolean updatePwd(@Param("id")int id)throws Exception;
 
     /**
      * 修改个人简介
-     * @param user
+     * @param id
      * @return
      * @throws Exception
      */
-    public boolean updateIntro(@Param("user")User user)throws Exception;
+    public boolean updateIntro(@Param("id")int id)throws Exception;
 
     /**
      * 修改电话号码
-     * @param user
+     * @param id
      * @return
      * @throws Exception
      */
-    public boolean updateTel(@Param("user")User user)throws Exception;
+    public boolean updateTel(@Param("id")int id)throws Exception;
 
     /**
      * 上传头像
      * @param id
-     * @param headurl
      * @return
      * @throws Exception
      */
-    public boolean uploadHead(@Param("id")int id,@Param("headurl")String headurl)throws Exception;
+    public boolean uploadHead(@Param("id")int id)throws Exception;
 
 //    /**
 //     * 查询

@@ -24,9 +24,9 @@
         FROM t_user
         WHERE username=#{user.username} AND password=#{user.password}
     </select>
-    <select id="addUser" resultType="com.join.GoodsTradingProgram.entity.user.User">
-        INSERT INTO t_user(realname,username,password,profession,stuno)
-        VALUES (#{user.realname},#{user.username},#{user.password},#{user.profession},#{user.stuno})
+    <select id="register" resultType="com.join.GoodsTradingProgram.entity.user.User">
+        INSERT INTO t_user(realname,username,password,profession,stuno,introduction,telnum,headurl)
+        VALUES (#{user.realname},#{user.username},#{user.password},#{user.profession},#{user.stuno},#{user.introduction},#{user.telnum},#{user.headurl})
     </select>
     <select id="selectUserMessage" resultType="com.join.GoodsTradingProgram.entity.user.User">
         SELECT *
@@ -35,7 +35,7 @@
     </select>
     <select id="delUser" resultType="com.join.GoodsTradingProgram.entity.user.User">
         DELETE FROM t_user
-        WHERE id=#{id}
+        WHERE id=#{user.id}
     </select>
     <select id="updatePwd" resultType="com.join.GoodsTradingProgram.entity.user.User">
         UPDATE t_user

@@ -45,21 +45,11 @@ public class UserController {
     public int register(User user)throws Exception{
         User user1 = userService.selectUserMessage(user);
         int b=0;
-        if (user1 != null){
-            boolean a = userService.addUser(user);
+        if (user1 == null){
+            boolean a = userService.register(user);
             if (a == true){
                 b=1;
             }
-        }
-        return b;
-    }
-
-    @RequestMapping(value = "addUser")
-    public int addUser(User user)throws Exception{
-        boolean a = userService.addUser(user);
-        int b=0;
-        if (a == true){
-            b=1;
         }
         return b;
     }
@@ -75,8 +65,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "updatePwd")
-    public int updatePwd(User user)throws Exception{
-        boolean a = userService.updatePwd(user);
+    public int updatePwd(int id)throws Exception{
+        boolean a = userService.updatePwd(id);
         int b=0;
         if (a == true){
             b=1;
@@ -85,8 +75,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "updateIntro")
-    public int updateIntro(User user)throws Exception{
-        boolean a = userService.updateIntro(user);
+    public int updateIntro(int id)throws Exception{
+        boolean a = userService.updateIntro(id);
         int b = 0;
         if (a == true){
             b=1;
@@ -95,8 +85,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "updateTel")
-    public int updateTel(User user)throws Exception{
-        boolean a = userService.updateTel(user);
+    public int updateTel(int id)throws Exception{
+        boolean a = userService.updateTel(id);
         int b=0;
         if (a == true){
             b=1;
@@ -105,8 +95,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "uploadHead")
-    public int uploadHead(User user)throws Exception{
-        boolean a = userService.uploadHead(user);
+    public int uploadHead(int id)throws Exception{
+        boolean a = userService.uploadHead(id);
         int b=0;
         if (a == true){
             b=1;
