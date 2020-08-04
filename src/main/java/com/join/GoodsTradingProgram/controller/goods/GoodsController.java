@@ -107,6 +107,23 @@ public class GoodsController {
     }
 
     @ResponseBody
+    @RequestMapping("/addImg")
+    public int addImg(int id,MultipartFile file)throws Exception{
+        ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
+        if(file==null){
+            return 0;
+        }
+        String filename=null;
+            String path="/yfn/good/"+id+"_";
+            String picUrl="/img/good/"+id+"_";
+//        String path="e:/yfn/good/"+id+"_";
+//        String picUrl="/img/good/"+id+"_";
+        filename=imgUploadUtil.imgUpload(file,path);
+        Img img=new Img(id,picUrl+filename,path+filename);
+        return goodsService.addImg(img);
+    }
+
+    @ResponseBody
     @RequestMapping("/listImg")
     public List<Img> listImg(int id)throws Exception{
         return goodsService.listImg(id);

@@ -47,7 +47,6 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.updateGoods(goods);
     }
     public List<Goods> queryType(String type)throws Exception{
-        System.out.println(type);
         return goodsMapper.queryType(type);
     }
     public List<Goods> queryDes(String des)throws Exception{
