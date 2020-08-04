@@ -28,42 +28,31 @@ public class ManagerController {
     private UserService userService;
 
     @ResponseBody
-    @RequestMapping(value = "listManager")
+    @RequestMapping(value = "/listManager")
     public List<Manager> ListManager()throws Exception{
-        List<Manager> list = managerService.ListManager();
-        return list;
+        return managerService.ListManager();
     }
 
-    @RequestMapping(value = "login")
+    @RequestMapping(value = "/login")
     public int login(Manager manager)throws Exception{
         Manager manager1 = managerService.login(manager);
         int a=1;
         if (manager1 == null){
             a=0;
-            return a;
+            return a;//无此用户
         }
         else {
-            return a;
+            return a;//有此用户
         }
     }
 
-    @RequestMapping(value = "addManager")
-    public int addManager(Manager manager)throws Exception{
-        Integer a = managerService.addManager(manager);
-        int b=0;
-        if (a == 1){
-            b=1;
-        }
-        return b;
+    @RequestMapping(value = "/addManager")
+    public Integer addManager(Manager manager)throws Exception{
+        return managerService.addManager(manager);
     }
 
-    @RequestMapping(value = "updateManager")
-    public int updateManager(Manager manager)throws Exception{
-        Integer a = managerService.updateManager(manager);
-        int b = 0;
-        if (a == 1){
-            b=1;
-        }
-        return b;
+    @RequestMapping(value = "/updateManager")
+    public Integer updateManager(Manager manager)throws Exception{
+        return managerService.updateManager(manager);
     }
 }

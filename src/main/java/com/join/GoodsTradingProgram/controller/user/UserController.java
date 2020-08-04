@@ -22,13 +22,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "list")
+    @RequestMapping(value = "/list")
     public List<User> listUser()throws Exception{
-        List<User> list = userService.listUser();
-        return list;
+        return userService.listUser();
     }
 
-    @RequestMapping(value = "login")
+    @RequestMapping(value = "/login")
     public int login(User user)throws Exception{
         User user1 = userService.login(user);
         int a=1;
@@ -41,7 +40,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "register")
+    @RequestMapping(value = "/register")
     public int register(User user)throws Exception{
         User user1 = userService.selectUserMessage(user);
         int b=0;
@@ -54,53 +53,33 @@ public class UserController {
         return b;
     }
 
-    @RequestMapping(value = "delUser")
-    public int delUser(int id)throws Exception{
+    @RequestMapping(value = "/delUser")
+    public Integer delUser(int id)throws Exception{
         Integer a = userService.delUser(id);
-        int b=0;
-        if (a == 1){
-            b=1;
-        }
-        return b;
+        return a;
     }
 
-    @RequestMapping(value = "updatePwd")
-    public int updatePwd(User user)throws Exception{
+    @RequestMapping(value = "/updatePwd")
+    public Integer updatePwd(User user)throws Exception{
         Integer a = userService.updatePwd(user);
-        int b=0;
-        if (a == 1){
-            b=1;
-        }
-        return b;
+        return a;
     }
 
     @RequestMapping(value = "updateIntro")
-    public int updateIntro(User user)throws Exception{
+    public Integer updateIntro(User user)throws Exception{
         Integer a = userService.updateIntro(user);
-        int b = 0;
-        if (a == 1){
-            b=1;
-        }
-        return b;
+        return a;
     }
 
     @RequestMapping(value = "updateTel")
-    public int updateTel(User user)throws Exception{
+    public Integer updateTel(User user)throws Exception{
         Integer a = userService.updateTel(user);
-        int b=0;
-        if (a == 1){
-            b=1;
-        }
-        return b;
+        return a;
     }
 
     @RequestMapping(value = "uploadHead")
-    public int uploadHead(User user)throws Exception{
+    public Integer uploadHead(User user)throws Exception{
         Integer a = userService.uploadHead(user);
-        int b=0;
-        if (a == 1){
-            b=1;
-        }
-        return b;
+        return a;
     }
 }

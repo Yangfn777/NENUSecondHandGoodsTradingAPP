@@ -61,7 +61,6 @@ public class ManagerServiceImpl implements ManagerService {
      */
     @Override
     public List<Manager> ListManager() throws Exception {
-        List<Manager> list = managerMapper.listManager();
-        return list;
+        return managerMapper.listManager();
     }
 }

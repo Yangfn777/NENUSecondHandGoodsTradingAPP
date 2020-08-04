@@ -7,6 +7,7 @@ import com.join.GoodsTradingProgram.service.userService.UserService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Controller;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
@@ -23,15 +24,15 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Rollback(value = false)
+@Controller
 public class UserTest {
 
     @Autowired
-    UserService userService;
+    UserController userController;
 
     @Test
     public void testlistUser()throws Exception{
-        List list = new ArrayList();
-
+        System.out.println(userController.listUser());
     }
 
     @Test
@@ -39,7 +40,7 @@ public class UserTest {
         User user = new User();
         user.setUsername("newUser");
         user.setPassword("123456");
-        System.out.println(userService.login(user));
+        System.out.println(userController.login(user));
     }
 
     @Test
@@ -53,41 +54,45 @@ public class UserTest {
         //user.setIntroduction("Hello everyone!");
         user.setTelnum("18981312998");
         //user.setHeadurl("XXXXXX");
-        System.out.println(userService.register(user));
+        //System.out.println(userController.register(user));
 
     }
 
     @Test
     public void testDelUser()throws Exception{
         int id=2;
-        System.out.println(userService.delUser(id));
+        System.out.println(userController.delUser(id));
     }
 
     @Test
     public void testUpdatePwd()throws Exception{
         User user = new User();
+        user.setId(1);
         user.setPassword("654321");
-        System.out.println(userService.updatePwd(user));
+        System.out.println(userController.updatePwd(user));
     }
 
     @Test
     public void testUpdateIntro()throws Exception{
         User user = new User();
+        user.setId(1);
         user.setIntroduction("Hello world!");
-        System.out.println(userService.updateIntro(user));
+        System.out.println(userController.updateIntro(user));
     }
 
     @Test
     public void testUpdateTel()throws Exception{
         User user = new User();
-        user.setTelnum("12345678901");
-        System.out.println(userService.updateTel(user));
+        user.setId(1);
+        user.setTelnum("12");
+        System.out.println(userController.updateTel(user));
     }
 
     @Test
     public void testUploadHead()throws Exception{
         User user = new User();
+        user.setId(1);
         user.setHeadurl("XXXXXX");
-        System.out.println(userService.uploadHead(user));
+        System.out.println(userController.uploadHead(user));
     }
 }
