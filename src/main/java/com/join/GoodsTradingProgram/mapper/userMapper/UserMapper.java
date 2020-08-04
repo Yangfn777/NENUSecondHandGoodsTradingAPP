@@ -36,7 +36,7 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public boolean register(@Param("user")User user)throws Exception;
+    public Integer register(@Param("user")User user)throws Exception;
 
     /**
      * 查找user的信息
@@ -52,39 +52,39 @@ public interface UserMapper {
      * @return
      * @throws Exception
      */
-    public boolean delUser(@Param("id")int id)throws Exception;
+    public Integer delUser(@Param("id")int id)throws Exception;
 
     /**
      * 修改密码
-     * @param id
+     * @param user
      * @return
      * @throws Exception
      */
-    public boolean updatePwd(@Param("id")int id)throws Exception;
+    public Integer updatePwd(@Param("user")User user)throws Exception;
 
     /**
      * 修改个人简介
-     * @param id
+     * @param user
      * @return
      * @throws Exception
      */
-    public boolean updateIntro(@Param("id")int id)throws Exception;
+    public Integer updateIntro(@Param("user")User user)throws Exception;
 
     /**
      * 修改电话号码
-     * @param id
+     * @param user
      * @return
      * @throws Exception
      */
-    public boolean updateTel(@Param("id")int id)throws Exception;
+    public Integer updateTel(@Param("user")User user)throws Exception;
 
     /**
      * 上传头像
-     * @param id
+     * @param user
      * @return
      * @throws Exception
      */
-    public boolean uploadHead(@Param("id")int id)throws Exception;
+    public Integer uploadHead(@Param("user")User user)throws Exception;
 
 //    /**
 //     * 查询

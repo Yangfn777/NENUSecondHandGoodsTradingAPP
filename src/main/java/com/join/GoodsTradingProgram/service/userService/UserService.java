@@ -12,11 +12,11 @@ import java.util.List;
 public interface UserService {
     public List<User> listUser() throws Exception;
     public User login(User user) throws Exception;
-    public boolean register(User user) throws Exception;
+    public Integer register(User user) throws Exception;
     public User selectUserMessage(User user) throws Exception;
-    public boolean delUser(int id)throws Exception;
-    public boolean updatePwd(int id) throws Exception;
-    public boolean updateIntro(int id)throws Exception;
-    public boolean updateTel(int id)throws Exception;
-    public boolean uploadHead(int id)throws Exception;
+    public Integer delUser(int id)throws Exception;
+    public Integer updatePwd(User user) throws Exception;
+    public Integer updateIntro(User user)throws Exception;
+    public Integer updateTel(User user)throws Exception;
+    public Integer uploadHead(User user)throws Exception;
 }

@@ -49,9 +49,9 @@ public class ManagerController {
 
     @RequestMapping(value = "addManager")
     public int addManager(Manager manager)throws Exception{
-        boolean a = managerService.addManager(manager);
+        Integer a = managerService.addManager(manager);
         int b=0;
-        if (a == true){
+        if (a == 1){
             b=1;
         }
         return b;
@@ -59,9 +59,9 @@ public class ManagerController {
 
     @RequestMapping(value = "updateManager")
     public int updateManager(Manager manager)throws Exception{
-        boolean a = managerService.updateManager(manager);
+        Integer a = managerService.updateManager(manager);
         int b = 0;
-        if (a == true){
+        if (a == 1){
             b=1;
         }
         return b;

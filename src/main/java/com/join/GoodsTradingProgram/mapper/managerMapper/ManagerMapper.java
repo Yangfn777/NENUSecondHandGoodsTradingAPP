@@ -30,16 +30,15 @@ public interface ManagerMapper {
      * @return
      * @throws Exception
      */
-    public Manager addManager(@Param("manager")Manager manager)throws Exception;
+    public Integer addManager(@Param("manager")Manager manager)throws Exception;
 
     /**
      * 修改个人信息
-     * @param managerName
-     * @param password
+     * @param manager
      * @return
      * @throws Exception
      */
-    public Manager updateManager(@Param("managerName")String managerName,@Param("password")String password)throws Exception;
+    public Integer updateManager(@Param("manager")Manager manager)throws Exception;
     /**
      * 列出所有管理者(查）
      * @return
