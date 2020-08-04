@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.join.GoodsTradingProgram.mapper.commentMapper.CommentMapper">
+    <resultMap id="student" type="com.join.GoodsTradingProgram.entity.comment.Comment">
+        <id property="id" column="id"/>
+        <result property="goodsId" column="goodsId"/>
+        <result property="sellerId" column="sellerId"/>
+        <result property="buyerId" column="buyerId"/>
+        <result property="content" column="content"/>
+        <result property="times" column="times"/>
+    </resultMap>
+
+    <select id="listComment" resultType="com.join.GoodsTradingProgram.entity.comment.Comment">
+SELECT * FROM t_comment
+  </select>
+
+    <insert id="addComment" parameterType="com.join.GoodsTradingProgram.entity.comment.Comment">
+INSERT into t_comment (goodsId,sellerId,buyerId,content,times)
+values (#{comment.goodsId},#{comment.sellerId},#{comment.buyerId},#{comment.content},#{comment.times})
+    </insert>
+
+    <delete id="delComment" parameterType="com.join.GoodsTradingProgram.entity.comment.Comment">
+DELETE from t_comment where id=#{id}
+    </delete>
+
+    <update id="updateContent" parameterType="com.join.GoodsTradingProgram.entity.comment.Comment">
+update t_comment set content=#{comment.content} where id=#{comment.id}
+    </update>
+
+    <select id="buyerSelect" resultType="com.join.GoodsTradingProgram.entity.comment.Comment">
+    SELECT * from t_comment where buyerId=#{buyerId} and goodsId=#{goodsId}
+    </select>
+
+    <select id="sellerSelect" resultType="com.join.GoodsTradingProgram.entity.comment.Comment">
+    SELECT * from t_comment where sellerId=#{sellerId} and goodsId=#{goodsId}
+    </select>
+
+</mapper>
