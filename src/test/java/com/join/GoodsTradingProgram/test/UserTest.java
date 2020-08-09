@@ -54,7 +54,7 @@ public class UserTest {
         //user.setIntroduction("Hello everyone!");
         user.setTelnum("18981312998");
         //user.setHeadurl("XXXXXX");
-        //System.out.println(userController.register(user));
+        System.out.println(userController.register(user));
 
     }
 

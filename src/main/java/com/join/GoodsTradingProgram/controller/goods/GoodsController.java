@@ -1,7 +1,9 @@
 package com.join.GoodsTradingProgram.controller.goods;
 
+import com.join.GoodsTradingProgram.entity.feelBack.FeelBack;
 import com.join.GoodsTradingProgram.entity.goods.Goods;
 import com.join.GoodsTradingProgram.entity.img.Img;
+import com.join.GoodsTradingProgram.entity.msg.Msg;
 import com.join.GoodsTradingProgram.service.goodsService.GoodsService;
 import com.join.GoodsTradingProgram.utils.img.ImgUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,6 +102,7 @@ public class GoodsController {
         return goodsService.deleteGoods(id);
     }
 
+
     @ResponseBody
     @RequestMapping("/deleteImg")
     public int deleteImg(int id)throws Exception{
@@ -129,5 +132,58 @@ public class GoodsController {
         return goodsService.listImg(id);
     }
 
+    @ResponseBody
+    @RequestMapping("/listFeelBack")
+    public List<FeelBack> listFeelBack()throws Exception{
+        return goodsService.litsFeelBack();
+    }
+
+    @ResponseBody
+    @RequestMapping("/listMyFeelBack")
+    public List<FeelBack> listMyFeelBack(int id)throws Exception{
+        return goodsService.litsFeelBackId(id);
+    }
+    @ResponseBody
+    @RequestMapping("/addFeelBack")
+    public int addFeelBack(FeelBack feelBack)throws Exception{
+        Date date=new Date();
+        feelBack.setDate(date);
+        return goodsService.addFeelBack(feelBack);
+    }
+    @ResponseBody
+    @RequestMapping("/updateFeelBack")
+    public int updateFeelBack(FeelBack feelBack)throws Exception{
+        return goodsService.updateFeelBack(feelBack);
+    }
+    @ResponseBody
+    @RequestMapping("/deleteFeelBack")
+    public int deleteFeelBack(int id)throws Exception{
+        return goodsService.deleteFeelBack(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/listMsg")
+    public List<Msg> listMsg()throws Exception{
+        return goodsService.litsMsg();
+    }
+
+    @ResponseBody
+    @RequestMapping("/listMyMsg")
+    public List<Msg> listMyMsg(int id)throws Exception{
+        return goodsService.litsMsgId(id);
+    }
+    @ResponseBody
+    @RequestMapping("/addMsg")
+    public int addMsg(Msg feelBack)throws Exception{
+        Date date=new Date();
+        feelBack.setDate(date);
+        return goodsService.addMsg(feelBack);
+    }
+
+    @ResponseBody
+    @RequestMapping("/deleteMsg")
+    public int deleteMsg(int id)throws Exception{
+        return goodsService.deleteMsg(id);
+    }
 
 }

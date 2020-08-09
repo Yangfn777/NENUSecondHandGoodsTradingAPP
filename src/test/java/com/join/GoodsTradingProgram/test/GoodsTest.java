@@ -1,6 +1,7 @@
 package com.join.GoodsTradingProgram.test;
 
 import com.join.GoodsTradingProgram.controller.goods.GoodsController;
+import com.join.GoodsTradingProgram.entity.feelBack.FeelBack;
 import com.join.GoodsTradingProgram.entity.goods.Goods;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,15 @@ public class GoodsTest {
         goods.setView(7);
         goods.setType("衣架");
 //        System.out.println(goodsController.addGoods(goods));
+    }
+
+    @Test
+    public void addFTest()throws Exception {
+        FeelBack feelBack=new FeelBack();
+        feelBack.setGid(2);
+        feelBack.setStr("sdaad");
+        feelBack.setUid(1);
+        System.out.println(goodsController.addFeelBack(feelBack));
     }
     @Test
     public void deleteGoods()throws Exception{

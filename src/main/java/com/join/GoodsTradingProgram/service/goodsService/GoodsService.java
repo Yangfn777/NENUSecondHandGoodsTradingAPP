@@ -1,7 +1,9 @@
 package com.join.GoodsTradingProgram.service.goodsService;
 
+import com.join.GoodsTradingProgram.entity.feelBack.FeelBack;
 import com.join.GoodsTradingProgram.entity.goods.Goods;
 import com.join.GoodsTradingProgram.entity.img.Img;
+import com.join.GoodsTradingProgram.entity.msg.Msg;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,5 +27,14 @@ public interface GoodsService {
     public int addView(Goods goods)throws Exception;
     public int addImg(Img img)throws Exception;
     public int deleteImg(int id)throws Exception;
+    public int deleteFeelBack(int id)throws Exception;
+    public int addFeelBack(FeelBack feelBack)throws Exception;
+    public List<FeelBack> litsFeelBack()throws Exception;
+    public List<FeelBack> litsFeelBackId(int id)throws Exception;
+    public int updateFeelBack(FeelBack feelBack)throws Exception;
     public List<Img> listImg(int id)throws Exception;
+    public int deleteMsg(int id)throws Exception;
+    public int addMsg(Msg feelBack)throws Exception;
+    public List<Msg> litsMsg()throws Exception;
+    public List<Msg> litsMsgId(int id)throws Exception;
 }

@@ -23,8 +23,8 @@
 
     <!--<update id="updateFeelBack">-->
     <!--UPDATE t_feelback-->
-    <!--SET status=#{feelback.status}-->
-    <!--WHERE id=#{feelback.id}-->
+    <!--SET status=#{feelBack.status}-->
+    <!--WHERE id=#{feelBack.id}-->
     <!--</update>-->
 
     <!--<delete id="deleteFeelBack">-->
