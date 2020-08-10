@@ -1,7 +1,9 @@
 <template>
 	<view style="box-sizing: border-box;padding: 10px;">
 		<view class="uni-textarea">
-			<textarea @blur="bindTextAreaBlur" style="height: 80px;" placeholder="请输入商品描述..." />
+			<textarea @blur="bindTextAreaBlur" style="height: 80px;"
+					  v-model="info.description"
+					  placeholder="请输入商品描述..." />
 			<view class="imgList">
 				<text class="title">图片上传</text>
 				<text class="num">{{imgList.length?imgList.length:0}}/4</text>
@@ -23,11 +25,9 @@
 			</view>
 			<view class="item d-flex flex-nowrap j-start">
 				<view class="title">商品名称：</view>
-				<input type="text" value="" placeholder="请输入商品名称..." />
-			</view>
-			<view class="item d-flex flex-nowrap j-start">
-				<view class="title">联系方式：</view>
-				<input type="text" value="" placeholder="请输入联系方式..." />
+				<input type="text" value="" placeholder="请输入商品名称..."
+					v-model="info.title"
+				/>
 			</view>
 			<view class="item d-flex flex-nowrap j-start">
 				<view class="title">商品类型：</view>
@@ -38,8 +38,15 @@
 			</view>
 			<view class="item d-flex flex-nowrap j-start">
 				<view class="title">商品价格：</view>
-				<input type="text" value="" placeholder="请输入商品价格..." />
+				<input type="text" value="" placeholder="请输入商品价格..."
+					v-model="info.prise"
+				/>
 			</view>
+			<button type="primary" size="primary"
+					style="display: block; margin-top: 8px;"
+					@click="publishGoods"
+			>发布</button>
+
 		</view>
 		<uniPopup ref="popupState" type="bottom">
 			<view class="" style="background-color: #fff;position: relative;bottom: 50px;">
@@ -61,11 +68,19 @@
 			return {
 				imgList:[],
 				fileList:[],
-				stateList:["书本","衣服","生活用品","娱乐用品"],
+				stateList:["","书本","衣服","生活用品","娱乐用品"],
 				form:{
 					state:-1
 				},
-				indicatorStyle: `height: ${Math.round(uni.getSystemInfoSync().screenWidth/(750/100))}px;`
+				indicatorStyle: `height: ${Math.round(uni.getSystemInfoSync().screenWidth/(750/100))}px;`,
+				info:{
+					type:"",
+					description:"",
+					prise:"",
+					title:"",
+					date:"",
+					view:0
+				}
 			}
 		},
 		methods: {
@@ -91,6 +106,10 @@
 			},
 			bindChange(e){
 				this.form.state = e.target.value[0]
+				this.info.type = this.stateList[e.target.value[0]]
+			},
+			publishGoods(){
+				this.info.date = new Date().toISOString()
 			}
 		},
 		components:{
