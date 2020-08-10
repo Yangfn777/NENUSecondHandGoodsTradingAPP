@@ -94,8 +94,8 @@ public class User {
         return fileurl;
     }
 
-    public void setFileurl(String fileUrl) {
-        this.fileurl = fileUrl;
+    public void setFileurl(String fileurl) {
+        this.fileurl = fileurl;
     }
 
 

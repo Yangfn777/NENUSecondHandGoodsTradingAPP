@@ -42,6 +42,11 @@
         SET password=#{user.password},introduction=#{user.introduction},telnum=#{user.telnum},headurl=#{user.headurl}
         WHERE id=#{user.id}
     </update>
+    <update id="recognize">
+        UPDATE t_user
+        SET fileurl=#{fileurl}
+        WHERE id=#{user.id}
+    </update>
 
 
     <!--<select id="listFeelBack" resultType="feelBack">-->

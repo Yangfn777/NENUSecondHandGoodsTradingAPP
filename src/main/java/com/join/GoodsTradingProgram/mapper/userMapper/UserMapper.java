@@ -62,6 +62,14 @@ public interface UserMapper {
      */
     public int updateUser(@Param("user")User user)throws Exception;
 
+    /**
+     * 认证
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    public int recognize(@Param("user")User user)throws Exception;
+
 //    /**
 //     * 查询
 //     * @return
