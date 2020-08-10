@@ -36,16 +36,17 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/login")
-    public int login(User user)throws Exception{
+    public User login(User user)throws Exception{
         User user1 = userService.login(user);
-        int a=1;
-        if (user1 == null){
-            a=0;
-            return a;
-        }
-        else {
-            return a;
-        }
+//        int a=1;
+//        if (user1 == null){
+//            a=0;
+//            return a;
+//        }
+//        else {
+//            return a;
+//        }
+        return user1;
     }
 
     @ResponseBody
