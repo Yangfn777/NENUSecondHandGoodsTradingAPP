@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -67,7 +68,18 @@ public class GoodsController {
     @ResponseBody
     @RequestMapping("/list")
     public List<Goods> list()throws Exception{
-        return goodsService.list();
+        List<Goods> list=goodsService.list();
+        //List<Img> list1=new ArrayList<>();
+        Img img=new Img();
+        for(Goods goods:list){
+            List<Img> list2=goodsService.listImg(goods.getId());
+            //list1.add(list2.get(1));
+            if(list2.size()!=0){
+                img=list2.get(0);
+                goods.setHeadPic(img.getPicUrl());
+            }
+        }
+        return list;
     }
 
     @ResponseBody

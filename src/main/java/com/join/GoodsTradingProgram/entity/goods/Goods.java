@@ -15,6 +15,7 @@ public class Goods {
     private String type;//类型
     private String description;//描述
     private String title;//标题
+    private String headPic;//
     private int view;//浏览量
     private float price;//价格
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
@@ -84,6 +85,15 @@ public class Goods {
         this.date = date;
     }
 
+
+    public String getHeadPic() {
+        return headPic;
+    }
+
+    public void setHeadPic(String headPic) {
+        this.headPic = headPic;
+    }
+
     @Override
     public String toString() {
         return "Goods{" +
@@ -92,6 +102,7 @@ public class Goods {
                 ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
                 ", title='" + title + '\'' +
+                ", headPic='" + headPic + '\'' +
                 ", view=" + view +
                 ", price=" + price +
                 ", date=" + date +
