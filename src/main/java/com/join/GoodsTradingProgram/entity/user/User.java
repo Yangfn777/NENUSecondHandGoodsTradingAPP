@@ -11,11 +11,12 @@ public class User {
     private String realname;
     private String username;
     private String password;
-    private String profession;
-    private String stuno;
-    private String telnum;
-    private String introduction;
-    private String headurl;
+    private String profession;//专业
+    private String stuno;//学号
+    private String telnum;//手机号
+    private String introduction;//个人简介
+    private String headurl;//头像
+    private String fileurl;//学生证图片
 
     public int getId() {
         return id;
@@ -88,6 +89,15 @@ public class User {
     public void setHeadurl(String headurl) {
         this.headurl = headurl;
     }
+
+    public String getFileurl() {
+        return fileurl;
+    }
+
+    public void setFileurl(String fileUrl) {
+        this.fileurl = fileUrl;
+    }
+
 
     @Override
     public String toString() {

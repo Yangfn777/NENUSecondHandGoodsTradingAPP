@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GoodsTradingProgramApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(GoodsTradingProgramApplication.class, args);
     }
 
