@@ -108,7 +108,7 @@ public class UserController {
 
         // 参数为本地图片二进制数组
 //        byte[] file = IdcardUtils.readImageFile(image);
-//        res = client.basicAccurateGeneral(file, options);
+//        JASONObject res = client.basicAccurateGeneral(file, options);
 //        System.out.println(res.toString(2));
     }
 
