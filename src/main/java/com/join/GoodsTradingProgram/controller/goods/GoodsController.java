@@ -4,7 +4,9 @@ import com.join.GoodsTradingProgram.entity.feelBack.FeelBack;
 import com.join.GoodsTradingProgram.entity.goods.Goods;
 import com.join.GoodsTradingProgram.entity.img.Img;
 import com.join.GoodsTradingProgram.entity.msg.Msg;
+import com.join.GoodsTradingProgram.entity.user.User;
 import com.join.GoodsTradingProgram.service.goodsService.GoodsService;
+import com.join.GoodsTradingProgram.service.userService.UserService;
 import com.join.GoodsTradingProgram.utils.img.ImgUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: Yangfn
@@ -27,6 +27,9 @@ import java.util.List;
 public class GoodsController {
     @Autowired
     private GoodsService goodsService;
+
+    @Autowired
+    private UserService userService;
 
     @ResponseBody
     @RequestMapping(value = "/addGoods")
@@ -51,11 +54,15 @@ public class GoodsController {
 
     @ResponseBody
     @RequestMapping("/list")
-    public List<Goods> list()throws Exception{
+    public HashMap<String,Object> list()throws Exception{
+        HashMap<String, Object> res = new HashMap<>();
         List<Goods> list=goodsService.list();
         //List<Img> list1=new ArrayList<>();
-        Img img=new Img();
+        Img img;
+        List<User> users=new ArrayList<>();
         for(Goods goods:list){
+            User user=userService.queryId(goods.getUserId());
+            users.add(user);
             List<Img> list2=goodsService.listImg(goods.getId());
             //list1.add(list2.get(1));
             if(list2.size()!=0){
@@ -63,7 +70,9 @@ public class GoodsController {
                 goods.setHeadPic(img.getPicUrl());
             }
         }
-        return list;
+        res.put("goods",list);
+        res.put("user",users);
+        return res;
     }
 
     @ResponseBody

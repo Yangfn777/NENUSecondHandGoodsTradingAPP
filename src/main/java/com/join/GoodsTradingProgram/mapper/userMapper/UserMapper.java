@@ -70,12 +70,12 @@ public interface UserMapper {
      */
     public int recognize(@Param("user")User user)throws Exception;
 
-//    /**
-//     * 查询
-//     * @return
-//     * @throws Exception
-//     */
-//    public List<User> queryUser(@Param("card")String card)throws Exception;
+    /**
+     * 查询
+     * @return
+     * @throws Exception
+     */
+    public User queryId(@Param("id")int id)throws Exception;
 //    /**
 //     * 查询
 //     * @return

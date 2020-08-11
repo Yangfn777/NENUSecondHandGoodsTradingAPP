@@ -53,10 +53,11 @@
         WHERE id=#{id}
     </update>
 
-    <!--<select id="listFeelBack" resultType="feelBack">-->
-    <!--SELECT *-->
-    <!--FROM t_feelback-->
-    <!--</select>-->
+    <select id="queryId" resultType="com.join.GoodsTradingProgram.entity.user.User">
+    SELECT *
+    FROM t_user
+    WHERE id=#{id}
+    </select>
 
     <!--<update id="updateFeelBack">-->
     <!--UPDATE t_feelback-->
