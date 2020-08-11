@@ -39,7 +39,7 @@ public class GoodsController {
             return 0;
         }
         int id=goods.getId();
-        System.out.println(goods);
+        //System.out.println(goods);
         for(MultipartFile file:files){
             if (file.isEmpty()) {
                 System.out.println("文件为空");

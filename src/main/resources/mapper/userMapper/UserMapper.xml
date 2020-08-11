@@ -47,7 +47,11 @@
         SET fileurl=#{fileurl}
         WHERE id=#{user.id}
     </update>
-
+    <update id="uploadHead">
+        UPDATE t_user
+        SET headurl=#{url}
+        WHERE id=#{id}
+    </update>
 
     <!--<select id="listFeelBack" resultType="feelBack">-->
     <!--SELECT *-->
