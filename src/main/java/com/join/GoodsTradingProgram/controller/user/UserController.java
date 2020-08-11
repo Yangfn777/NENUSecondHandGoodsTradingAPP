@@ -112,4 +112,10 @@ public class UserController {
 //        System.out.println(res.toString(2));
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/queryId")
+    public User queryId(int id)throws Exception{
+        return userService.queryId(id);
+    }
+
 }
