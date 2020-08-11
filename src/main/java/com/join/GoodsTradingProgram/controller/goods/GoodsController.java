@@ -29,9 +29,8 @@ public class GoodsController {
     private GoodsService goodsService;
 
     @ResponseBody
-    @RequestMapping(value = "/addGoods",method = RequestMethod.POST)
-    public int addGoods(@RequestParam(value = "file") MultipartFile files[], Goods goods)throws Exception{
-        ImgUploadUtil imgUploadUtil=new ImgUploadUtil();
+    @RequestMapping(value = "/addGoods")
+    public int addGoods(Goods goods)throws Exception{
         Date date=new Date();
         goods.setDate(date);
         goods.setView(0);
@@ -39,21 +38,6 @@ public class GoodsController {
             return 0;
         }
         int id=goods.getId();
-        //System.out.println(goods);
-        for(MultipartFile file:files){
-            if (file.isEmpty()) {
-                System.out.println("文件为空");
-                break;
-            }
-            String filename=null;
-            String path="/yfn/good/"+id+"_";
-            String picUrl="/img/good/"+id+"_";
-//            String path="e:/yfn/good/"+id+"_";
-//            String picUrl="/img/good/"+id+"_";
-            filename=imgUploadUtil.imgUpload(file,path);
-            Img img=new Img(id,picUrl+filename,path+filename);
-            goodsService.addImg(img);
-        }
         return id;
     }
 
