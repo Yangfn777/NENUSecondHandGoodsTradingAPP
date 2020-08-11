@@ -49,5 +49,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateUser(user);
     }
 
+    @Override
+    public int uploadHead(int id,String url) throws Exception {
+        return userMapper.uploadHead(id,url);
+    }
+
 
 }

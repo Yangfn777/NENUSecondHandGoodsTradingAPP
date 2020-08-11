@@ -83,12 +83,12 @@ public interface UserMapper {
 //     */
 //    public List<Report> queryReport(@Param("stu_id")int stu_id)throws Exception;
 
-//    /**
-//     * 上传头像
-//     * @return
-//     * @throws Exception
-//     */
-//    public int uploadHead(@Param("id")int id,@Param("path")String path,@Param("HeadUrl")String HeadUrl)throws Exception;
+    /**
+     * 上传头像
+     * @return
+     * @throws Exception
+     */
+    public int uploadHead(@Param("id")int id,@Param("url")String url)throws Exception;
 //    /**
 //     * 增加反馈
 //     * @param feelBack

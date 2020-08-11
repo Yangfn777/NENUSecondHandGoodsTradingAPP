@@ -16,4 +16,5 @@ public interface UserService {
     public User selectUserMessage(User user) throws Exception;
     public int delUser(int id)throws Exception;
     public int updateUser(User user) throws Exception;
+    public int uploadHead(int id,String url) throws Exception;
 }
