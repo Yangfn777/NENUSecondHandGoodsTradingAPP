@@ -39,7 +39,7 @@
     </delete>
     <update id="updateUser">
         UPDATE t_user
-        SET username=#{username},password=#{user.password},telnum=#{user.telnum},introduction=#{user.introduction},headurl=#{user.headurl}
+        SET username=#{user.username},password=#{user.password},telnum=#{user.telnum},introduction=#{user.introduction},headurl=#{user.headurl}
         WHERE id=#{user.id}
     </update>
     <update id="recognize">
