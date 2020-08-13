@@ -91,8 +91,17 @@ public class GoodsController {
 
     @ResponseBody
     @RequestMapping("/queryType")
-    public List<Goods> queryType(String type)throws Exception{
-        return goodsService.queryType(type);
+    public HashMap<String,Object> queryType(String type)throws Exception{
+        HashMap<String, Object> res = new HashMap<>();
+        List<Goods> list=goodsService.queryType(type);
+        List<User> users=new ArrayList<>();
+        for(Goods goods:list) {
+            User user = userService.queryId(goods.getUserId());
+            users.add(user);
+        }
+        res.put("goods",list);
+        res.put("user",users);
+        return res;
     }
 
     @ResponseBody
