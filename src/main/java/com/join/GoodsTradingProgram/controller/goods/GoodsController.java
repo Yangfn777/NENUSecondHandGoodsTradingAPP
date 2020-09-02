@@ -91,8 +91,24 @@ public class GoodsController {
 
     @ResponseBody
     @RequestMapping("/queryType")
-    public List<Goods> queryType(String type)throws Exception{
-        return goodsService.queryType(type);
+    public HashMap<String,Object> queryType(String type)throws Exception{
+        HashMap<String, Object> res = new HashMap<>();
+        List<Goods> list=goodsService.queryType(type);
+        Img img;
+        List<User> users=new ArrayList<>();
+        for(Goods goods:list) {
+            User user = userService.queryId(goods.getUserId());
+            users.add(user);
+            List<Img> list2=goodsService.listImg(goods.getId());
+            //list1.add(list2.get(1));
+            if(list2.size()!=0){
+                img=list2.get(0);
+                goods.setHeadPic(img.getPicUrl());
+            }
+        }
+        res.put("goods",list);
+        res.put("user",users);
+        return res;
     }
 
     @ResponseBody
