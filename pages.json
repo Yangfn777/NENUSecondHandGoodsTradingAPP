@@ -1,5 +1,5 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [ 
 		{
 			"path": "pages/index/index"
 		},
@@ -39,15 +39,6 @@
             "style" : {
 				"navigationBarTextStyle": "white",
 				"navigationBarTitleText": "我的购买",
-				"navigationBarBackgroundColor": "#4e86ff",
-				"backgroundColor": "#4e86ff"
-			}
-		},
-		{
-			"path":"pages/collect/collect",
-			"style":{
-				"navigationBarTextStyle": "white",
-				"navigationBarTitleText": "我的收藏",
 				"navigationBarBackgroundColor": "#4e86ff",
 				"backgroundColor": "#4e86ff"
 			}
