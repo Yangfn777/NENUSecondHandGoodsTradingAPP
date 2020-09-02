@@ -38,8 +38,8 @@ public class UserTest {
     @Test
     public void testLogin()throws Exception{
         User user = new User();
-        user.setUsername("newUser");
-        user.setPassword("123456");
+        user.setUsername("new");
+        user.setPassword("123321");
         System.out.println(userController.login(user));
     }
 
@@ -67,7 +67,8 @@ public class UserTest {
     @Test
     public void testUpdateUser()throws Exception{
         User user = new User();
-        user.setId(1);
+        user.setId(12);
+        user.setUsername("123456");
         user.setPassword("654321");
         user.setIntroduction("Hello world!");
         user.setTelnum("1234");
