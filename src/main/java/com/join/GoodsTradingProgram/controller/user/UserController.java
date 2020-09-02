@@ -103,12 +103,13 @@ public class UserController {
         options.put("probability", "true");
 
         // 参数为本地图片路径
-        String image = user.getFileurl();//身份证照片路径
-        return client.basicAccurateGeneral(image, options);
+//        String image = user.getFileurl();学生证照片路径
+//        return client.basicAccurateGeneral(image, options);
 
         // 参数为本地图片二进制数组
-//        byte[] file = IdcardUtils.readImageFile(image);
-//        return client.basicAccurateGeneral(file, options);
+        String idcardString = user.getIdcardString();//获得学生证照片的basic64码
+        byte[] file = IdcardUtils.decode(idcardString);
+        return client.basicAccurateGeneral(file, options);
     }
 
     @ResponseBody

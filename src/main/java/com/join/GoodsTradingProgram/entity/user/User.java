@@ -16,7 +16,7 @@ public class User {
     private String telnum;//手机号
     private String introduction;//个人简介
     private String headurl;//头像
-    private String fileurl;//学生证图片
+    private String idcardString;//学生证图片的basic64码
 
     public int getId() {
         return id;
@@ -90,14 +90,13 @@ public class User {
         this.headurl = headurl;
     }
 
-    public String getFileurl() {
-        return fileurl;
+    public String getIdcardString() {
+        return idcardString;
     }
 
-    public void setFileurl(String fileurl) {
-        this.fileurl = fileurl;
+    public void setIdcardString(String idcardString) {
+        this.idcardString = idcardString;
     }
-
 
     @Override
     public String toString() {
