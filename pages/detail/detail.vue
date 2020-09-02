@@ -4,8 +4,8 @@
 			<view class="" style="width:80%;">
 				<view class="" style="font-size: 18px; font-weight: bold;">{{ good.title }}</view>
 				<view class="">
-					<text class="mr-2">{{ good.time }}</text>
-					<text>浏览人数{{ good.num }}人</text>
+					<text class="mr-2">{{ good.date }}</text>
+					<text>浏览人数{{ good.view }}人</text>
 				</view>
 			</view>
 			<view class="" style="width: 20%;" @click="isStar">
@@ -19,7 +19,7 @@
 				<view class="page-section swiper">
 					<view class="page-section-spacing">
 						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" circular="true">
-							<swiper-item v-for="(item,index) in good.imgList" :key="index"><image :src="item" mode="heightFix" class="w-100"></image></swiper-item>
+							<swiper-item v-for="(item,index) in imgList" :key="index"><image :src="baseUrl+item.picUrl" mode="heightFix" class="w-100"></image></swiper-item>
 						</swiper>
 					</view>
 				</view>
@@ -27,11 +27,11 @@
 		</view>
 		<view class="d-flex w-100 p-1 a-center" style="border-bottom: 1px solid #BEBEBE">
 			<view class="text-center" style="width:24%; font-size:16px;font-weight: 600;">详细描述</view>
-			<view class="" style="width:86%; line-height:1.2 !important; color:#7d7d7d">{{good.des}}</view>
+			<view class="" style="width:86%; line-height:1.2 !important; color:#7d7d7d">{{good.description}}</view>
 		</view>
 		<view class="d-flex w-100 p-1 a-center" style="border-bottom: 1px solid #BEBEBE;">
 			<view class="text-center" style="width:24%; font-size:16px;font-weight: 600;">类型标签</view>
-			<view class="" style="width:86%; line-height:1.2 !important; color:#007AFF">#{{good.meta}}</view>
+			<view class="" style="width:86%; line-height:1.2 !important; color:#007AFF">#{{good.type}}</view>
 		</view>
 		<view class="d-flex w-100 p-1 a-center" style="border-bottom: 1px solid #BEBEBE;">
 			<view class="text-center" style="width:24%; font-size:16px;font-weight: 600;">价钱</view>
@@ -39,11 +39,11 @@
 		</view>
 		<view class="d-flex w-100 p-1 a-center" style="border-bottom: 1px solid #BEBEBE;">
 			<view class="text-center" style="width:24%; font-size:16px;font-weight: 600;">联系人</view>
-			<view class="" style="width:86%; line-height:1.2 !important; color:#7d7d7d">{{good.person}}</view>
+			<view class="" style="width:86%; line-height:1.2 !important; color:#7d7d7d">{{user.username}}</view>
 		</view>
 		<view class="d-flex w-100 p-1 a-center" style="border-bottom: 1px solid #BEBEBE;">
 			<view class="text-center" style="width:24%; font-size:16px;font-weight: 600;">手机号</view>
-			<view class="" style="width:86%; line-height:1.2 !important; color:#7d7d7d">{{good.tel}}</view>
+			<view class="" style="width:86%; line-height:1.2 !important; color:#7d7d7d">{{user.telnum}}</view>
 		</view>
 		<view class="" style="border-bottom: 1px solid #BEBEBE;padding:20rpx;background-color: #EEEEEE">
 			为保障用户信息的安全，请您先进行学生注册与认证后即可查看具体联系人信息。
@@ -65,24 +65,61 @@
 export default {
 	data() {
 		return {
+			baseUrl:'http://47.94.210.131:4430',
 			background: ['color1', 'color2', 'color3'],
 			indicatorDots: true,
 			autoplay: true,
 			interval: 2000,
 			duration: 500,
 			star: true,
-			good: {
-				title: '考研复习资料全套',
-				time: '2020-6-6 13:00:00',
-				num: '32',
-				imgList: ['../../static/images/10.jpg','../../static/images/10.jpg'],
-				des: '考研资料几乎全新，考试前花了300百购买，现在考研结束，140出，不邮寄，一食堂自行取货！非同校勿扰，谢谢！',
-				meta: '书本类',
-				price: 140,
-				person: '奔跑',
-				tel: '183****2881'
-			}
+			good: {},
+			imgList:[],
+			user:{},
 		};
+	},
+	onLoad(option) {
+		console.log(option.id)
+		uni.request({
+				url:'http://47.94.210.131:4430/goods/queryId?'+'id='+parseInt(option.id),
+				method: 'GET',
+				// data: {},
+				success: res => {
+					console.log(res);
+					this.good=res.data;
+					//根据id查所有的图片
+					uni.request({
+							url:'http://47.94.210.131:4430/goods/listImg?'+'id='+parseInt(res.data.id),
+							// url:'http://47.94.210.131:4430/goods//listImg?'+'id='+19,
+							method: 'GET',
+							// data: {},
+							success: res => {
+								console.log(res);
+								this.imgList=res.data;
+							},
+							fail: () => {},
+							complete: () => {
+					
+							}
+						});
+					//查询用户信息
+					uni.request({
+							url:'http://47.94.210.131:4430/user/queryId?'+'id='+parseInt(res.data.userId),
+							method: 'GET',
+							// data: {},
+							success: res => {
+								this.user=res.data;
+							},
+							fail: () => {},
+							complete: () => {
+					
+							}
+						});
+				},
+				fail: () => {},
+				complete: () => {
+		
+				}
+			});
 	},
 	methods: {
 		isStar:function(e){

@@ -17,18 +17,18 @@
 		<!-- 商品信息 -->
 		<view class="d-flex w-100" v-for="(item,index) in goods" :key="index" style="border-bottom:1px solid #BEBEBE">
 			<view style="width:20%" class="text-center">
-				<image :src="item.headPic" mode="" style="width: 100rpx;height: 100rpx;border-radius: 100%;"></image>
+				<image :src="baseUrl+item.head" mode="" style="width: 100rpx;height: 100rpx;border-radius: 100%;"></image>
 			</view>
 			<view style="width:80%">
 				<view class="" style="font-size: 18px; font-weight: 500;">{{item.nick}}</view>
 				<view class="" style="color:#767676">{{item.title}}</view>
 				<view class="d-flex j-sb">
-					<image :src="item.imgList[0]" mode="widthFix" class="mr-1"></image>
-					<image :src="item.imgList[1]" mode="widthFix"></image>
+					<image :src="baseUrl+item.headPic" mode="widthFix" class="mr-1"></image>
+					<!-- <image src="../../static/images/11.jpg" mode="widthFix"></image> -->
 				</view>
-				<view class="" style="color:#007bff">#{{item.meta}}</view>
+				<view class="" style="color:#007bff">#{{item.type}}</view>
 				<view class="mb-1">
-					<text style="margin-right:100rpx;">{{item.time}}</text>
+					<text style="margin-right:100rpx;">{{item.date}}</text>
 					<text @click="goDetail" :id="item.id">浏览</text>
 				</view>
 			</view>
@@ -42,27 +42,37 @@ export default {
 	components: { uniSearchBar },
 	data() {
 		return {
-			goods:[{
-				id:0,
-				headPic:'../../static/images/5.jpg',
-				nick:'奔跑',
-				title:'出售考研书籍',
-				imgList:['../../static/images/10.jpg','../../static/images/10.jpg'],
-				meta:'书本类',
-				time:'2020-6-6 13:00:00'
-			},
-			{
-				id:1,
-				headPic:'../../static/images/6.jpg',
-				nick:'向上',
-				title:'出售洗面奶和护肤品',
-				imgList:['../../static/images/11.jpg','../../static/images/12.jpg'],
-				meta:'生活用品类',
-				time:'2020-6-6 13:00:00'
-			}]
+			baseUrl:'http://47.94.210.131:4430',
+			goods:[],
+			user:[]
 		};
 	},
-	onLoad() {},
+	onShow() {
+		uni.request({
+				url: 'http://47.94.210.131:4430/goods/list',
+				method: 'GET',
+				data: {},
+				success: res => {
+					console.log(res);
+					this.goods=res.data.goods;
+					this.user=res.data.user;
+					//拼接字符串
+					for(var i=0;i<this.goods.length;i++) {
+					        // console.log(this.goods[i]);
+							this.goods[i].nick=this.user[i].username;
+							this.goods[i].head=this.user[i].headurl;
+							console.log(this.goods[i]);
+					    }
+				},
+				fail: () => {},
+				complete: () => {
+		
+				}
+			});
+	},
+	onLoad() {
+		
+	},
 	methods: {
 		goDetail(e){
 			//这个商品的id
@@ -73,6 +83,27 @@ export default {
 			})
 		},
 		search(e){
+			console.log(e);
+			uni.request({
+					url: 'http://47.94.210.131:4430/goods/queryType?'+'type='+e.value,
+					method: 'GET',
+					// data:{e.value},
+					success: res => {
+						
+						console.log(res);
+						this.goods=res.data;
+						// //拼接字符串
+						// for(var i=0;i<this.goods.length;i++) {
+						//         console.log(this.goods[i]);
+						// 		this.goods[i].uu='jj';
+						// 		console.log(this.goods[i]);
+						//     }
+					},
+					fail: () => {},
+					complete: () => {
+			
+					}
+				});
 			uni.navigateTo({
 				url:"../search/search?content="+e.value
 			})
