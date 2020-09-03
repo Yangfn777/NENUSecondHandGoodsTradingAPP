@@ -22,7 +22,7 @@
     <select id="login" resultType="com.join.GoodsTradingProgram.entity.user.User">
         SELECT *
         FROM t_user
-        WHERE username=#{user.username} AND password=#{user.password}
+        WHERE stuno=#{user.stuno} AND password=#{user.password}
     </select>
     <insert id="register" parameterType="com.join.GoodsTradingProgram.entity.user.User" useGeneratedKeys="true"  keyProperty="id">
         INSERT INTO t_user(realname,username,password,profession,stuno,introduction,telnum,headurl)
