@@ -94,9 +94,10 @@ public class UserController {
         filename=imgUploadUtil.imgUpload(file,path);
         return userService.uploadHead(id,picUrl+filename);
     }
+
     @ResponseBody
-    @RequestMapping(value = "/recognize")
-    public HashMap<String, String> recognize(User user)throws Exception{
+    @RequestMapping(value = "recognize")
+    public HashMap<String, String> recognize(String idcardString)throws Exception{
         AipOcr client = new AipOcr(BaiduConfig.APP_ID, BaiduConfig.API_KEY, BaiduConfig.SECRET_KEY);
         // 传入可选参数调用接口
         HashMap<String, String> options = new HashMap<String, String>();
@@ -108,7 +109,7 @@ public class UserController {
 //        return client.basicAccurateGeneral(image, options);
 
         // 参数为本地图片二进制数组
-        String idcardString = user.getIdcardString();//获得学生证照片的basic64码
+        //String idcardString = user.getIdcardString();//获得学生证照片的basic64码
         byte[] file = IdcardUtils.decode(idcardString);
         JSONObject res = client.basicAccurateGeneral(file, options);
 

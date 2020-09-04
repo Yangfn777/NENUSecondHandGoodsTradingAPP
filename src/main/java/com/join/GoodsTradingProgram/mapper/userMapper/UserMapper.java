@@ -62,13 +62,6 @@ public interface UserMapper {
      */
     public int updateUser(@Param("user")User user)throws Exception;
 
-    /**
-     * 认证
-     * @param user
-     * @return
-     * @throws Exception
-     */
-    public int recognize(@Param("user")User user)throws Exception;
 
     /**
      * 查询
@@ -96,4 +89,12 @@ public interface UserMapper {
 //     * @throws Exception
 //     */
 //    public int addFeelBack(@Param("feelBack")FeelBack feelBack)throws Exception;
+
+    /**
+     * 文字识别
+     * @param idcardString
+     * @return
+     * @throws Exception
+     */
+    public int recognize(String idcardString) throws Exception;
 }

@@ -53,6 +53,12 @@ public class UserServiceImpl implements UserService {
     public int uploadHead(int id,String url) throws Exception {
         return userMapper.uploadHead(id,url);
     }
+
+    @Override
+    public int recognize(String idcardString) throws Exception {
+        return 0;
+    }
+
     @Override
     public User queryId(int id) throws Exception{
         return userMapper.queryId(id);

@@ -18,4 +18,5 @@ public interface UserService {
     public int delUser(int id)throws Exception;
     public int updateUser(User user) throws Exception;
     public int uploadHead(int id,String url) throws Exception;
+    public int recognize(String idcardString)throws Exception;
 }
