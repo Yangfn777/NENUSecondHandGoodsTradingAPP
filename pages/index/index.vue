@@ -122,5 +122,6 @@ export default {
 	align-items: center;
 	justify-content: center;
 	/* color: #4e86ff; */
+	padding-bottom:100rpx;
 }
 </style>
