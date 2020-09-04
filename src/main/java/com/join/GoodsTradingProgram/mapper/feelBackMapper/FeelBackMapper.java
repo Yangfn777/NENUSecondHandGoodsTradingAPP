@@ -15,7 +15,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface FeelBackMapper {
-    public int addFeelBack(@Param("feelback")FeelBack feelback)throws Exception;
+    public int addFeelBack(FeelBack feelback)throws Exception;
     public int deleteFeelBack(int id)throws Exception;
     public List<FeelBack> listAll()throws Exception;
     public List<FeelBack> queryId(int id)throws Exception;

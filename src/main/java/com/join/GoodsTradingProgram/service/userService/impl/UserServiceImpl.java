@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int register(User user) throws Exception {
+        user.setHeadurl("/img/user/userpic.png");
         return userMapper.register(user);
     }
 

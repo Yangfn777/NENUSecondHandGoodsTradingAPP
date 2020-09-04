@@ -37,7 +37,7 @@
     <insert id="addFeelBack" parameterType="com.join.GoodsTradingProgram.entity.feelBack.FeelBack">
     INSERT INTO t_feelback
     (uid,gid,str,date,status)
-    VALUES (#{feelback.uid},#{feelback.gid},
-    #{feelback.str},#{feelback.date},#{feelback.status})
+    VALUES (#{uid},#{gid},
+    #{str},#{date},#{status})
     </insert>
 </mapper>
