@@ -1,4 +1,4 @@
-let url_config = "http://47.94.210.131:4430"
+let url_config = "http://47.94.210.131:8080"
 
 // if(process.env.NODE_ENV === 'development'){
 //     // 开发环境

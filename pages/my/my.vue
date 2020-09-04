@@ -1,12 +1,12 @@
 <template>
 	<view class="j-center a-center position-relative" style="height: 100%;">
-		<view class="login" @tap="login" style="color:#007AFF">登录/注册</view>
+		<view class="login" @tap="login" style="color:#2929ff">登录/注册</view>
 		<view class="head position-relative" >
-			<image class="bg" src="../../static/images/bg.jpg" mode=""></image>
+			<image class="bg" src="../../static/images/16.jpg" mode=""></image>
 			<view class="" style="height: 100%;position: relative;z-index: 1;">
 				<image src="../../static/images/userpic.png" class="rounded-circle mt-5" style="width: 145rpx;
 				height:145rpx; border:5rpx solid #F1F1F1"></image>
-				<view class="a-center">昵称</view>
+				<view class="a-center">vampire</view>
 			</view>
 		</view>
 		<view class="list">
@@ -27,7 +27,7 @@
 	        onLoad(){  
 	        },  
 	        methods: {
-				login:function(e){
+				login(){
 					uni.navigateTo({
 						url:"../login/login"
 					})
@@ -61,7 +61,7 @@
 		position: absolute;
 		top: 10px;
 		right: 10px;
-		z-index: 1;
+		z-index: 30;
 	}
 	.head{
 		height: 30%;

@@ -19,13 +19,19 @@
 		{
 			"path":"pages/login/login",
 			"style":{
-				"app-plus":{
-					"titleNView":false,
-					"bounce":"none"
-				}
 			}
-		}
-	    ,{
+		},
+		{
+			"path":"pages/detail/detail",
+			"style":{
+			}
+		},
+		{
+			"path":"pages/search/search",
+			"style":{
+			}
+		},
+	    {
             "path" : "pages/userInfo/userInfo",
             "style" : {
 				"navigationBarTextStyle": "white",
@@ -65,7 +71,6 @@
 		
     ],
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "东师二手市场",
 		"navigationBarBackgroundColor": "#4e86ff",
 		"backgroundColor": "#4e86ff"

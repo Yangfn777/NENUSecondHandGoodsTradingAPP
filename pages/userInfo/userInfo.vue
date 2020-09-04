@@ -21,7 +21,8 @@
 			<view class="con" style="width: 50%;" >{{userInfo.username}}</view>
 		</view>
 		<view class="item">联系方式
-			<view class="con">{{userInfo.telnum}}</view>
+			<view class="con" @tap="changeTel" style="width: 30%;color: #007AFF;text-align: right;">修改联系方式</view>
+			<view class="con" style="width: 40%;">{{userInfo.telnum?userInfo.telnum:"暂无联系方式"}}</view>
 		</view>
 		<view class="item" style="color: #007AFF;" @tap="changePwd">修改密码</view>
 		<uniPopup ref="popupName" type="center">
@@ -35,6 +36,21 @@
 					<button type="primary" size="mini"
 						style="display: block; margin-top: 8px;"
 						@click="upName"
+					>提交修改</button>
+				</view>
+			</view>
+		</uniPopup>
+		<uniPopup ref="popuptel" type="center">
+			<view class="box">
+				<view class="title">修改联系方式</view>
+				<view class="con">
+					<input type="text" placeholder="请输入联系方式" value="" class="uni-input"
+						   style="border-bottom: 1x solid #ddd;"
+						   v-model="newtel"
+					/>
+					<button type="primary" size="mini"
+							style="display: block; margin-top: 8px;"
+							@click="upName"
 					>提交修改</button>
 				</view>
 			</view>
@@ -74,30 +90,28 @@
 		data() {
 			return {
 				url:"http://47.94.210.131:4430",
-				userInfo:{
-					id:1,
-					realname:'Liulq',
-					username:'newUser',
-					password:'654321',
-					profession:'Math',
-					stuno:'2018010281',
-					introduction:'Hello world!',
-					telnum:'1234',
-					headurl:'XXXXXX',
-					fileurl:null,
-				},
+				userInfo:null,
 				oldpwd:"",
 				newpwd:"",
 				repwd:"",
-				newUsername:""
+				newUsername:"",
+				newtel:""
 			}
 		},
-		created() {
-
+		onShow(){
+			uni.getStorage({
+				key:"info",
+				success:(e)=>{
+					this.userInfo = JSON.parse(e.data)//这就是你想要取的token
+				}
+			})
 		},
 		methods: {
 			changeName(){
 				this.$refs.popupName.open()
+			},
+			changeTel(){
+				this.$refs.popuptel.open()
 			},
 			changePwd() {
 				this.$refs.popupPwd.open()

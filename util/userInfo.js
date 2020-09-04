@@ -27,3 +27,6 @@ export const changePwd = (data)=>{
 		header: {}
 	})
 }
+
+// 上传图片
+
