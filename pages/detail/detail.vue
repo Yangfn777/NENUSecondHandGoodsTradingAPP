@@ -100,15 +100,12 @@ export default {
 		};
 	},
 	onLoad(option) {
-		this.buyerId = 1;
 		//获取用户本身的id
 		uni.getStorage({
-			key: 'stuno',
-			success(e) {
-				console.log(e);
-				//通过学号来获得id
-
-				this.buyerId = 2;
+			key: 'info',
+			success: function(res) {
+				console.log(JSON.parse(res.data));
+				this.buyerId=JSON.parse(res.data).id;
 			}
 		});
 		//获得商品的id

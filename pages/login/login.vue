@@ -85,7 +85,7 @@ export default {
 								url: 'http://47.94.210.131:8080/user/recognize',
 								method: 'POST',
 								 header: {
-								        'content-type': 'application/json' // 默认值
+								        'content-type': 'application/x-www-form-urlencoded'
 								      },
 								data:{idcardString:this.imgBase},
 								success: res => {
