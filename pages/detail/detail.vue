@@ -103,11 +103,12 @@ export default {
 		//获取用户本身的id
 		uni.getStorage({
 			key: 'info',
-			success: function(res) {
+			success: (res)=> {
 				console.log(JSON.parse(res.data));
 				this.buyerId=JSON.parse(res.data).id;
 			}
 		});
+		console.log(this.buyerId);
 		//获得商品的id
 		console.log(option.id);
 		this.goodsId = option.id;
@@ -185,6 +186,7 @@ export default {
 			this.times = this.getTime();
 			console.log(this.times);
 			console.log(this.content);
+			console.log(this.buyerId);
 			//获取头像
 			uni.request({
 				url: 'http://47.94.210.131:8080/user/queryId',
