@@ -42,14 +42,14 @@ export default {
 	components: { uniSearchBar },
 	data() {
 		return {
-			baseUrl:'http://47.94.210.131:4430',
+			baseUrl:'http://47.94.210.131:8080',
 			goods:[],
 			user:[]
 		};
 	},
 	onShow() {
 		uni.request({
-				url: 'http://47.94.210.131:4430/goods/list',
+				url: 'http://47.94.210.131:8080/goods/list',
 				method: 'GET',
 				data: {},
 				success: res => {
@@ -85,7 +85,7 @@ export default {
 		search(e){
 			console.log(e);
 			uni.request({
-					url: 'http://47.94.210.131:4430/goods/queryType?'+'type='+e.value,
+					url: 'http://47.94.210.131:8080/goods/queryType?'+'type='+e.value,
 					method: 'GET',
 					// data:{e.value},
 					success: res => {

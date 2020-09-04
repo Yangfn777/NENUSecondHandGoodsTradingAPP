@@ -26,7 +26,7 @@
 			</view>
 			<view class="mt-5 wrap wrap d-flex a-center">
 				<image src="../../static/images/mima.png" mode="" style="width:70rpx;height:70rpx"></image>
-				<input v-model="password" type="text" value="" placeholder="请输入密码" class="p-2" placeholder-style="font-size:28rpx;color:#B2B2B2" />
+				<input v-model="password" type="password" value="" placeholder="请输入密码" class="p-2" placeholder-style="font-size:28rpx;color:#B2B2B2" />
 			</view>
 		</view>
 		<!-- 登录 -->
@@ -37,7 +37,7 @@
 			</view>
 			<view class="mt-5 wrap wrap d-flex a-center">
 				<image src="../../static/images/mima.png" mode="" style="width:70rpx;height:70rpx"></image>
-				<input v-model="password" type="text" value="" placeholder="请输入密码" class="p-2" placeholder-style="font-size:28rpx;color:#B2B2B2" />
+				<input v-model="password" type="password" value="" placeholder="请输入密码" class="p-2" placeholder-style="font-size:28rpx;color:#B2B2B2" />
 			</view>
 		</view>
 		<!-- 点击登录 -->
@@ -57,12 +57,14 @@ export default {
 			password: '',
 			profession: '',
 			stuno: '',
-			type: '注册'
+			type: '注册',
+			imgBase: ''
 		};
 	},
-	// onLoad(){
-	//     console.log('now:' + helper.now());
-	// },
+	onLoad(){
+	    this.stuno='';
+		this.password='';
+	},
 	methods: {
 		chooseTheImg: function() {
 			uni.chooseImage({
@@ -72,44 +74,33 @@ export default {
 				success: res => {
 					console.log(res);
 					let src = res.tempFilePaths[0]; //图片的本地文件路径列表
-					// uni.getFileSystemManager().readFile({
-					// 	filePath: src,
-					// 	encoding: 'base64',
-					// 	success: r => {
-					// 		console.log(r);
-					// 	}
-					// });
 					wx.request({
-					        url: src,//临时路径
-					        responseType: 'arraybuffer', //设置返回的数据格式为arraybuffer
-					        success: res => {
-					                const imgFiles = wx.arrayBufferToBase64(res.data)};
-									
-									console.log(imgFiles),
-					    })
-
-					console.log(imgFiles);
-					this.uploadTheImg(imgFiles);
+						url: src, //临时路径
+						responseType: 'arraybuffer', //设置返回的数据格式为arraybuffer
+						success: res => {
+							const imgFiles = wx.arrayBufferToBase64(res.data);
+							console.log(imgFiles);
+							this.imgBase = imgFiles;
+							uni.request({
+								url: 'http://47.94.210.131:8080/user/recognize',
+								method: 'POST',
+								 header: {
+								        'content-type': 'application/json' // 默认值
+								      },
+								data:{idcardString:this.imgBase},
+								success: res => {
+									// let base64 = wx.arrayBufferToBase64(res.data); //把arraybuffer转成base64
+									// base64 = 'data:image/jpeg;base64,' + base64; //不加上这串字符，在页面无法显示的
+									console.log(res);
+									// resolve(base64);
+								},
+								fail: err => {
+									console.log(res);
+								}
+							});
+						}
+					});
 				}
-			});
-		},
-		//上传图片
-		uploadTheImg(imgFiles) {
-			uni.uploadFile({
-				url: 'http://47.94.210.131:4430/user/recognize', //后端用于处理图片并返回图片地址的接口
-				header: {
-					Token: this.userToken
-				},
-				filePath: imgFiles[0],
-				name: 'file',
-				success: res => {
-					console.log(res);
-					let data = JSON.parse(res.data); //返回的是字符串，需要转成对象格式，打印data如下图
-					if (data.code == 200) {
-						console.log(data.msg); //图片地址
-					}
-				},
-				fail: () => {}
 			});
 		},
 		register: function() {
@@ -129,7 +120,7 @@ export default {
 			console.log(this.realname);
 			if (this.type == '注册') {
 				uni.request({
-					url: 'http://47.94.210.131:4430/user/register',
+					url: 'http://47.94.210.131:8080/user/register',
 					method: 'GET',
 					data: { realname: this.realname, username: this.username, password: this.password, profession: this.profession, stuno: this.stuno },
 					success: res => {
@@ -153,7 +144,7 @@ export default {
 				});
 			} else {
 				uni.request({
-					url: 'http://47.94.210.131:4430/user/login',
+					url: 'http://47.94.210.131:8080/user/login',
 					method: 'GET',
 					data: { password: this.password, stuno: this.stuno },
 					success: res => {
