@@ -137,6 +137,8 @@
 										title:"",
 										view:0
 									}
+									this.form.state = -1;
+									this.imgList = [];
 									uni.navigateTo({
 										url: '/pages/publish/publish',
 									});

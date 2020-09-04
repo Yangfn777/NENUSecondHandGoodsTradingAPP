@@ -147,7 +147,7 @@ export default {
 				uni.request({
 					url: 'http://47.94.210.131:8080/user/login',
 					method: 'GET',
-					data: { password: this.password, username: this.stuno },
+					data: { password: this.password, stuno: this.stuno },
 					success: res => {
 						if (res.data) {
 							//本地存储数据
