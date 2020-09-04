@@ -41,15 +41,6 @@
 			}
         },
 		{
-			"path":"pages/buying/buying",
-            "style" : {
-				"navigationBarTextStyle": "white",
-				"navigationBarTitleText": "我的购买",
-				"navigationBarBackgroundColor": "#4e86ff",
-				"backgroundColor": "#4e86ff"
-			}
-		},
-		{
 			"path":"pages/feedback/feedback",
 			"style":{
 				"navigationBarTextStyle": "white",

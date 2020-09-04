@@ -11,7 +11,6 @@
 		</view>
 		<view class="list">
 			<view class="item" @tap="userInfo">个人信息</view>
-			<view class="item" @tap="buying">我的购买</view>
 			<view class="item" @tap="publish">我的发布</view>
 			<view class="item" @tap="feedback">我的反馈</view>
 		</view>
@@ -35,11 +34,6 @@
 				userInfo(){
 					uni.navigateTo({
 						url:"../userInfo/userInfo"
-					})
-				},
-				buying(){
-					uni.navigateTo({
-						url:"../buying/buying"
 					})
 				},
 				publish(){

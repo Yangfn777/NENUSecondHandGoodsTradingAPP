@@ -50,7 +50,7 @@
 					/>
 					<button type="primary" size="mini"
 							style="display: block; margin-top: 8px;"
-							@click="upName"
+							@click="upTel"
 					>提交修改</button>
 				</view>
 			</view>
@@ -73,7 +73,7 @@
 					/>
 					<button type="primary" size="mini"
 						style="display: block; margin-top: 8px;"
-							@click="upUsername"
+							@click="upPassword"
 					>提交修改</button>
 				</view>
 			</view>
@@ -84,7 +84,7 @@
 <script>
 
 	import {uniPopup} from '@dcloudio/uni-ui'
-	import {changeUsername,relogin,changePwd} from "../../util/userInfo";
+	import {changeUserInfo,relogin,changePwd} from "../../util/userInfo";
 
 	export default {
 		data() {
@@ -117,7 +117,7 @@
 				this.$refs.popupPwd.open()
 			},
 			upName(){
-				changeUsername({
+				changeUserInfo({
 					id:this.userInfo.id,
 					username:this.newUsername,
 					password:this.userInfo.password
@@ -131,6 +131,12 @@
 						});
 						this.$refs.popupName.close()
 						this.userInfo.username = this.newUsername
+						uni.setStorage({
+							key: 'info',
+							data: JSON.stringify(this.userInfo),
+							success: function() {
+							}
+						});
 						this.newUsername = ""
 					}else {
 						uni.showToast({
@@ -142,7 +148,40 @@
 					}
 				})
 			},
-			upUsername(){
+			upTel(){
+				changeUserInfo({
+					id:this.userInfo.id,
+					telnum:this.newtel,
+					password:this.userInfo.password,
+					username: this.userInfo.username,
+				}).then(res=>{
+					if(res[1].data===1){
+						uni.showToast({
+							title:"修改成功",
+							duration:1500,
+							mask:false,
+							icon:"none"
+						});
+						this.$refs.popuptel.close()
+						this.userInfo.telnum = this.newtel
+						uni.setStorage({
+							key: 'info',
+							data: JSON.stringify(this.userInfo),
+							success: function() {
+							}
+						});
+						this.newtel = ""
+					}else {
+						uni.showToast({
+							title:"修改失败",
+							duration:1500,
+							mask:false,
+							icon:"none"
+						});
+					}
+				})
+			},
+			upPassword(){
 				if(!(this.newpwd&&this.oldpwd&&this.repwd)){
 					uni.showToast({
 						title:"请将信息填写完整",
@@ -179,6 +218,12 @@
 								});
 								this.$refs.popupPwd.close()
 								this.userInfo.password = this.newpwd
+								uni.setStorage({
+									key: 'info',
+									data: JSON.stringify(this.userInfo),
+									success: function() {
+									}
+								});
 								this.newpwd=""
 								this.oldpwd=""
 								this.repwd=""
@@ -196,7 +241,6 @@
 				})
 			},
 			upImg(){
-				console.log("上传头像")
 				uni.chooseImage({
 					count: 1,
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
