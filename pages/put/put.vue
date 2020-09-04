@@ -119,7 +119,7 @@
 				this.info.type = this.stateList[e.target.value[0]]
 			},
 			publishGoods(){
-				this.info.uid = this.userInfo.id;
+				this.info.userId = this.userInfo.id;
 				putGoods(this.info).then(res=>{
 					let goodId = res[1].data;
 					this.imgList.forEach((item,index)=>{

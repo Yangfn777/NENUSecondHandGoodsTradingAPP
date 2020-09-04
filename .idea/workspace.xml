@@ -20,64 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69155e2b-4aff-498e-b106-59c66e0a7fe2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/uni-icons/icons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/uni-icons/uni-icons.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/uni-search-bar/uni-search-bar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/detail/detail.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/search/search.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/15.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/fanhui.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/jiage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/leixing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/lianxi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/lianxi1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/name.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/shoucang.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/star-opp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/15.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/fanhui.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/jiage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/leixing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/lianxi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/lianxi1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/name.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/shoucang.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unpackage/dist/dev/app-plus/static/images/star-opp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/putGoods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/buying/buying.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/my/my.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/my/my.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/publish/publish.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/publish/publish.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/put/put.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/put/put.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/userInfo/userInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/userInfo/userInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/buying.js" beforeDir="false" afterPath="$PROJECT_DIR$/util/publish.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/util/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/util/userInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +75,7 @@
       <updated>1597063401823</updated>
       <workItem from="1597063403023" duration="6213000" />
       <workItem from="1597156236225" duration="1049000" />
-      <workItem from="1599045751744" duration="8319000" />
+      <workItem from="1599045751744" duration="12927000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 // 修改昵称
 import url_config from "../config";
-export const changeUsername = (data)=>{
+export const changeUserInfo = (data)=>{
 	return uni.request({
 		url: url_config+'/user/updateUser',
 		data: data,

@@ -1,7 +1,10 @@
 <template>
 	<view>
-		<view v-for="(item,index) in collectList" :key="item" class="d-flex j-start flex-nowrap item">
-			<image style="width: 30%;" :src="item.img" mode=""></image>
+		<view v-for="(item,index) in collectList" :key="index"
+			  class="d-flex j-start flex-nowrap item"
+			  @tap="navigate(item)"
+		>
+			<image style="width: 30%;" :src="item.headPic&&item.headPic.length>0?url+item.headPic[0].picUrl:''" mode=""></image>
 			<view class="con" style="width: 70%;">
 				<view class="title">{{item.title}}</view>
 				<view class="des">{{item.description}}</view>
@@ -13,30 +16,49 @@
 
 
 <script>
+	import {listPublishing,getGoodsImg} from "../../util/publish";
+
 	export default {
 		data() {
 			return {
-				collectList: [{
-					img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592245750656&di=118c01c35298d4a9af8286dfeec66693&imgtype=0&src=http%3A%2F%2Fdpic.tiankong.com%2Fmi%2Fhz%2FQJ6507898187.jpg",
-					title: "书本",
-					description: "几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，"
-				},
-				{
-					img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592245750656&di=118c01c35298d4a9af8286dfeec66693&imgtype=0&src=http%3A%2F%2Fdpic.tiankong.com%2Fmi%2Fhz%2FQJ6507898187.jpg",
-					title: "书本",
-					description: "几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，"
-				},
-				{
-					img: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592245750656&di=118c01c35298d4a9af8286dfeec66693&imgtype=0&src=http%3A%2F%2Fdpic.tiankong.com%2Fmi%2Fhz%2FQJ6507898187.jpg",
-					title: "书本",
-					description: "几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，几乎全新，300出，不邮寄，"
-				},
-				]
+				collectList: [],
+				userInfo:[],
+				url:"http://47.94.210.131:8080"
 			}
 		},
 		methods: {
+			navigate(item){
+				let id = item.id;
+				uni.navigateTo({
+					url: `/pages/detail/detail?id=${id}`,
+				});
+			}
+		},
+		onShow(){
+			uni.getStorage({
+				key:"info",
+				success:(e)=>{
+					this.userInfo = JSON.parse(e.data)//这就是你想要取的token
+				}
+			})
+			listPublishing({
+				id:this.userInfo.id
+			}).then(res=>{
+				this.collectList = res[1].data;
+				this.collectList.forEach((item,index)=>{
+					getGoodsImg({
+						id:item.id
+					}).then(res=>{
+						item.headPic = res[1].data
+					}).catch(err=>{
+						throw err;
+					})
+				})
 
-		}
+			}).catch(err=>{
+				throw err;
+			})
+		},
 	}
 </script>
 
@@ -70,7 +92,7 @@
 				-moz-box-orient: vertical;
 				/*从上到下自动排列子元素*/
 				-webkit-box-orient: vertical;
-				-webkit-line-clamp: 3;
+				-webkit-line-clamp: 2;
 				/*显示的行数*/
 			}
 		}
