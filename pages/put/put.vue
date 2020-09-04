@@ -106,10 +106,8 @@
 				});
 			},
 			deleteImg(index){
-				if(confirm("确定要删除吗")){
-					this.imgList.splice(index,1);
-					this.fileList.splice(index,1);
-				}
+				this.imgList.splice(index,1);
+				this.fileList.splice(index,1);
 			},
 			changeState(){
 				this.$refs.popupState.open()
@@ -131,16 +129,7 @@
 								'id': goodId,
 							},
 							success: res => {
-								console.log(res);
-								// let data = JSON.parse(res.data); //返回的是字符串，需要转成对象格式，打印data如下图
-								// if (data.code == 200) {
-								// 	console.log(data.msg); //图片地址
-								// }
 								if(res.data==="1"){
-									uni.showToast({
-										title: '发布成功',
-										duration: 1000
-									});
 									this.info = {
 										type:"",
 										description:"",

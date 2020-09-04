@@ -1,27 +1,26 @@
 import url_config from "../config";
 // 获取该用户的发布商品列表
-export const listPublishing = (data)=>{
+export const listFeedBack = (data)=>{
     return uni.request({
-        url: url_config+'/goods/listGoods',
+        url: url_config+'/goods/listFeelBack',
         data: data,
         method: 'get', //get、post、delete
         header: {}
     })
 }
-// 通过商品id获取商品图片
-export const getGoodsImg = (data)=>{
+// 删除反馈
+export const deleteFeedBack = (data)=>{
     return uni.request({
-        url: url_config+'/goods/listImg',
+        url: url_config+'/goods/deleteFeelBack',
         data: data,
         method: 'get', //get、post、delete
         header: {}
     })
 }
-
-// 通过商品id删除商品
-export const deleteGoods = (data)=>{
+// 发布反馈
+export const addFeedBack = (data)=>{
     return uni.request({
-        url: url_config+'/goods/deleteGoods',
+        url: url_config+'/goods/addFeelBack',
         data: data,
         method: 'get', //get、post、delete
         header: {}

@@ -2,6 +2,7 @@
 	<view>
 		<view v-for="(item,index) in collectList" :key="index"
 			  class="d-flex j-start flex-nowrap item"
+			  style="position: relative"
 			  @tap="navigate(item)"
 		>
 			<image style="width: 30%;" :src="item.headPic&&item.headPic.length>0?url+item.headPic[0].picUrl:''" mode=""></image>
@@ -9,14 +10,16 @@
 				<view class="title">{{item.title}}</view>
 				<view class="des">{{item.description}}</view>
 			</view>
-
+			<view @tap.stop="deleteGoods(item,index) "
+				style="position: absolute;bottom: 10px;right: 10px;color: red;"
+			>删除</view>
 		</view>
 	</view>
 </template>
 
 
 <script>
-	import {listPublishing,getGoodsImg} from "../../util/publish";
+	import {listPublishing,getGoodsImg,deleteGoods} from "../../util/publish";
 
 	export default {
 		data() {
@@ -32,6 +35,32 @@
 				uni.navigateTo({
 					url: `/pages/detail/detail?id=${id}`,
 				});
+			},
+			deleteGoods(item,index){
+				uni.showModal({
+					title: '提示',
+					content: '确认要删除吗？',
+					success: (res)=>{
+						if (res.confirm) {
+							deleteGoods({
+								id:item.id
+							}).then(res=>{
+								if(res[1].data){
+									uni.showToast({
+										title: '删除成功',
+										duration: 1000
+									});
+									this.collectList.splice(index,1)
+								}
+							}).catch(err=>{
+								throw err;
+							})
+						} else if (res.cancel) {
+							return;
+						}
+					}
+				});
+
 			}
 		},
 		onShow(){

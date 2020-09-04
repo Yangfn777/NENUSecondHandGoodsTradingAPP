@@ -1,12 +1,15 @@
 <template>
 	<view class="j-center a-center position-relative" style="height: 100%;">
-		<view class="login" @tap="login" style="color:#2929ff">登录/注册</view>
+		<view
+				v-if="!info"
+				class="login" @tap="login" style="color:#2929ff">登录/注册</view>
 		<view class="head position-relative" >
-			<image class="bg" src="../../static/images/16.jpg" mode=""></image>
+			<image class="bg" :src="'../../static/images/16.jpg'" mode=""></image>
 			<view class="" style="height: 100%;position: relative;z-index: 1;">
-				<image src="../../static/images/userpic.png" class="rounded-circle mt-5" style="width: 145rpx;
+				<image :src="info.headurl?info.headurl:'../../static/images/userpic.png'" class="rounded-circle mt-5" style="width: 145rpx;
 				height:145rpx; border:5rpx solid #F1F1F1"></image>
-				<view class="a-center">vampire</view>
+				<view class="a-center" v-if="info">{{info?info.username:''}}</view>
+
 			</view>
 		</view>
 		<view class="list">
@@ -21,10 +24,18 @@
 <script>
 	export default {
 	        data() {  
-	            return {};  
-	        },  
-	        onLoad(){  
-	        },  
+	            return {
+	            	info:null,
+				};
+	        },
+			onShow(){
+				uni.getStorage({
+					key:"info",
+					success:(e)=>{
+						this.info = JSON.parse(e.data)//这就是你想要取的token
+					}
+				})
+			},
 	        methods: {
 				login(){
 					uni.navigateTo({
@@ -32,16 +43,40 @@
 					})
 				},
 				userInfo(){
+					if(!this.info){
+						uni.showToast({
+							title:"请您先登录哦",
+							duration:1000,
+							icon:"none"
+						});
+						return;
+					}
 					uni.navigateTo({
 						url:"../userInfo/userInfo"
 					})
 				},
 				publish(){
+					if(!this.info){
+						uni.showToast({
+							title:"请您先登录哦",
+							duration:1000,
+							icon:"none"
+						});
+						return;
+					}
 					uni.navigateTo({
 						url:"../publish/publish"
 					})
 				},
 				feedback(){
+					if(!this.info){
+						uni.showToast({
+							title:"请您先登录哦",
+							duration:1000,
+							icon:"none"
+						});
+						return;
+					}
 					uni.navigateTo({
 						url:"../feedback/feedback"
 					})
