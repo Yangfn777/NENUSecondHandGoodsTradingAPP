@@ -5,6 +5,8 @@ import com.join.GoodsTradingProgram.mapper.commentMapper.CommentMapper;
 import com.join.GoodsTradingProgram.service.commentService.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Date;
+
 
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public boolean addComment(Comment comment) throws Exception{
+        comment.setTimes(new Date());
         boolean a = commentMapper.addComment(comment);
         return a;
     }
