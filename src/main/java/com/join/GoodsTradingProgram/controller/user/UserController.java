@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -95,7 +96,7 @@ public class UserController {
     }
     @ResponseBody
     @RequestMapping(value = "/recognize")
-    public JSONObject recognize(User user)throws Exception{
+    public HashMap<String, String> recognize(User user)throws Exception{
         AipOcr client = new AipOcr(BaiduConfig.APP_ID, BaiduConfig.API_KEY, BaiduConfig.SECRET_KEY);
         // 传入可选参数调用接口
         HashMap<String, String> options = new HashMap<String, String>();
@@ -109,7 +110,21 @@ public class UserController {
         // 参数为本地图片二进制数组
         String idcardString = user.getIdcardString();//获得学生证照片的basic64码
         byte[] file = IdcardUtils.decode(idcardString);
-        return client.basicAccurateGeneral(file, options);
+        JSONObject res = client.basicAccurateGeneral(file, options);
+
+        HashMap<String, String> data = new HashMap<String, String>();
+        // 将json字符串转换成jsonObject
+        //JSONObject jsonObject = JSONObject.fromObject(object);
+        Iterator it = res.keys();
+        // 遍历jsonObject数据，添加到Map对象
+        while (it.hasNext())
+        {
+            String key = String.valueOf(it.next());
+            //String value = (String) res.get(key);
+            String value = String.valueOf(res.get(key));
+            data.put(key, value);
+        }
+        return data;
     }
 
     @ResponseBody
