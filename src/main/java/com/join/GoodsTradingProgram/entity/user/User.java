@@ -15,8 +15,7 @@ public class User {
     private String stuno;//学号
     private String telnum;//手机号
     private String introduction;//个人简介
-    private String headurl;//头像
-    private String idcardString;//学生证图片的basic64码
+    private String headurl;//用户头像
 
     public int getId() {
         return id;
@@ -90,14 +89,6 @@ public class User {
         this.headurl = headurl;
     }
 
-    public String getIdcardString() {
-        return idcardString;
-    }
-
-    public void setIdcardString(String idcardString) {
-        this.idcardString = idcardString;
-    }
-
     @Override
     public String toString() {
         return "Manager{" +
@@ -109,7 +100,6 @@ public class User {
                 ", stuno='" + stuno + '\'' +
                 ", telnum='" + telnum + '\'' +
                 ", introduction='" + introduction + '\'' +
-                ", headurl='" + headurl + '\'' +
                 '}';
     }
 }

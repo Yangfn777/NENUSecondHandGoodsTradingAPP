@@ -45,10 +45,10 @@ public class GoodsTest {
         System.out.println(goodsController.queryType("书"));
     }
 
-    @Test
-    public void queryId()throws Exception{
-        System.out.println(goodsController.queryId(1));
-    }
+//    @Test
+//    public void queryId()throws Exception{
+//        System.out.println(goodsController.queryId(1));
+//    }
 
     @Test
     public void queryDes()throws Exception{

@@ -6,6 +6,7 @@ import com.join.GoodsTradingProgram.entity.user.User;
 import com.join.GoodsTradingProgram.service.userService.UserService;
 import com.join.GoodsTradingProgram.utils.Idcard.IdcardUtils;
 import com.join.GoodsTradingProgram.utils.img.ImgUploadUtil;
+import org.apache.catalina.realm.JAASCallbackHandler;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -97,11 +98,13 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "recognize")
-    public HashMap<String, String> recognize(String idcardString)throws Exception{
+    public JSONObject recognize(String idcardString)throws Exception{
         AipOcr client = new AipOcr(BaiduConfig.APP_ID, BaiduConfig.API_KEY, BaiduConfig.SECRET_KEY);
         // 传入可选参数调用接口
         HashMap<String, String> options = new HashMap<String, String>();
+        options.put("recognize_granularity", "big");
         options.put("detect_direction", "true");
+        options.put("vertexes_location", "true");
         options.put("probability", "true");
 
         // 参数为本地图片路径
@@ -111,21 +114,21 @@ public class UserController {
         // 参数为本地图片二进制数组
         //String idcardString = user.getIdcardString();//获得学生证照片的basic64码
         byte[] file = IdcardUtils.decode(idcardString);
-        JSONObject res = client.basicAccurateGeneral(file, options);
+        JSONObject res = client.accurateGeneral(file, options);
 
-        HashMap<String, String> data = new HashMap<String, String>();
-        // 将json字符串转换成jsonObject
-        //JSONObject jsonObject = JSONObject.fromObject(object);
-        Iterator it = res.keys();
+//        HashMap<String, String> data = new HashMap<String, String>();
+//        Iterator it = res.keys();
         // 遍历jsonObject数据，添加到Map对象
-        while (it.hasNext())
-        {
-            String key = String.valueOf(it.next());
-            //String value = (String) res.get(key);
-            String value = String.valueOf(res.get(key));
-            data.put(key, value);
-        }
-        return data;
+//        while (it.hasNext())
+//        {
+//            String key = String.valueOf(it.next());
+//            //String value = (String) res.get(key);
+//            String value = String.valueOf(res.get(key));
+//            data.put(key, value);
+//        }
+        //HashMap<String,Object> data = new HashMap<String, Object>();
+        //String s = String.valueOf(res);
+        return res;
     }
 
     @ResponseBody
