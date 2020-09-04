@@ -158,9 +158,9 @@ export default {
 					method: 'GET',
 					data: { password: this.password, username: this.stuno },
 					success: res => {
-						console.log(res);
 						if (res.data) {
 							//本地存储数据
+							res.data.headurl = "http://47.94.210.131:8080"+res.data.headurl;
 							uni.setStorage({
 								key: 'info',
 								data: JSON.stringify(res.data),

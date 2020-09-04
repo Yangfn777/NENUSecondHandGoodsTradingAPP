@@ -2,7 +2,7 @@
 	<view class="list">
 		<view class="img" style="text-align: center;"
 		>
-			<image :src="userInfo.headurl?userInfo.headurl+url:'../../static/images/userpic.png'" class="rounded-circle mt-3" style="width: 145rpx;
+			<image :src="userInfo.headurl?userInfo.headurl:'../../static/images/userpic.png'" class="rounded-circle mt-3" style="width: 145rpx;
 			height:145rpx; border:5rpx solid #F1F1F1"
 				   @click="upImg"
 			></image>
@@ -246,24 +246,36 @@
 					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
 					sourceType: ['album'], //从相册选择
 					success: (res)=>{
-						const tempFilePaths = res.tempFilePaths;
-						const uploadTask = uni.uploadFile({
-							url : this.url+"/updateUser",
-							filePath: tempFilePaths[0],
-							name: 'file',
+						const tempFilePaths = res.tempFilePaths[0];
+						this.userInfo.headurl = tempFilePaths;
+						uni.uploadFile({
+							url: 'http://47.94.210.131:8080/user/uploadHead', //后端用于处理图片并返回图片地址的接
+							filePath: tempFilePaths,
+							name:'file',
 							formData: {
-								'user': 'test'
+								'id': this.userInfo.id,
 							},
-							success: function (uploadFileRes) {
-								console.log(uploadFileRes.data);
+							success: res => {
+								if(res.data==="1"){
+									uni.showToast({
+										title: '头像上传成功',
+										duration: 1000
+									});
+									uni.setStorage({
+										key: 'info',
+										data: JSON.stringify(this.userInfo),
+										success: function() {
+										}
+									});
+								}
+							},
+							fail: () => {
+								uni.showToast({
+									title: '图片上传失败',
+									icon:"none",
+									duration: 1000
+								});
 							}
-						});
-
-						uploadTask.onProgressUpdate(function (res) {
-							_self.percent = res.progress;
-							// console.log('上传进度' + res.progress);
-							// console.log('已经上传的数据长度' + res.totalBytesSent);
-							// console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend);
 						});
 					},
 					error : function(e){

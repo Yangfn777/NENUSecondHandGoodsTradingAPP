@@ -20,15 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69155e2b-4aff-498e-b106-59c66e0a7fe2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/util/feedback.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/buying/buying.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/feedback/feedback.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/feedback/feedback.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/my/my.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/my/my.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/publish/publish.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/publish/publish.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/put/put.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/put/put.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/userInfo/userInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/userInfo/userInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/buying.js" beforeDir="false" afterPath="$PROJECT_DIR$/util/publish.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/userInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/util/userInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/publish.js" beforeDir="false" afterPath="$PROJECT_DIR$/util/publish.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +75,7 @@
       <updated>1597063401823</updated>
       <workItem from="1597063403023" duration="6213000" />
       <workItem from="1597156236225" duration="1049000" />
-      <workItem from="1599045751744" duration="12927000" />
+      <workItem from="1599045751744" duration="20502000" />
     </task>
     <servers />
   </component>
