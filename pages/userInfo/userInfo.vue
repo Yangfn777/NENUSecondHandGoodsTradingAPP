@@ -1,35 +1,56 @@
 <template>
 	<view class="list">
-		<view class="img" style="text-align: center;">
-			<image src="../../static/images/userpic.png" class="rounded-circle mt-3" style="width: 145rpx;
-			height:145rpx; border:5rpx solid #F1F1F1"></image>
+		<view class="img" style="text-align: center;"
+		>
+			<image :src="userInfo.headurl?userInfo.headurl+url:'../../static/images/userpic.png'" class="rounded-circle mt-3" style="width: 145rpx;
+			height:145rpx; border:5rpx solid #F1F1F1"
+				   @click="upImg"
+			></image>
 		</view>
 		<view class="item">真实姓名
-			<view class="con">XXX</view>
+			<view class="con">{{userInfo.realname}}</view>
 		</view>
 		<view class="item">学生学号
-			<view class="con">XXX</view>	
+			<view class="con">{{userInfo.stuno}}</view>
 		</view>
 		<view class="item">学生专业
-			<view class="con">XXX</view>
+			<view class="con">{{userInfo.profession}}</view>
 		</view>
 		<view class="item">学生昵称
 			<view class="con" @tap="changeName" style="width: 20%;color: #007AFF;text-align: right;">修改昵称</view>
-			<view class="con" style="width: 50%;" >XXX</view>
+			<view class="con" style="width: 50%;" >{{userInfo.username}}</view>
 		</view>
 		<view class="item">联系方式
-			<view class="con">XXX</view>
+			<view class="con" @tap="changeTel" style="width: 30%;color: #007AFF;text-align: right;">修改联系方式</view>
+			<view class="con" style="width: 40%;">{{userInfo.telnum?userInfo.telnum:"暂无联系方式"}}</view>
 		</view>
 		<view class="item" style="color: #007AFF;" @tap="changePwd">修改密码</view>
 		<uniPopup ref="popupName" type="center">
 			<view class="box">
 				<view class="title">修改昵称</view>
 				<view class="con">
-					<input type="text" placeholder="请输入昵称" value="" class="uni-input" 
+					<input type="text" placeholder="请输入昵称" value="" class="uni-input"
 						style="border-bottom: 1x solid #ddd;"
+						v-model="newUsername"
 					/>
 					<button type="primary" size="mini"
 						style="display: block; margin-top: 8px;"
+						@click="upName"
+					>提交修改</button>
+				</view>
+			</view>
+		</uniPopup>
+		<uniPopup ref="popuptel" type="center">
+			<view class="box">
+				<view class="title">修改联系方式</view>
+				<view class="con">
+					<input type="text" placeholder="请输入联系方式" value="" class="uni-input"
+						   style="border-bottom: 1x solid #ddd;"
+						   v-model="newtel"
+					/>
+					<button type="primary" size="mini"
+							style="display: block; margin-top: 8px;"
+							@click="upName"
 					>提交修改</button>
 				</view>
 			</view>
@@ -38,17 +59,21 @@
 			<view class="box">
 				<view class="title">修改密码</view>
 				<view class="con">
-					<input type="text" password placeholder="请输入原密码" value="" class="uni-input" 
+					<input type="text" password placeholder="请输入原密码" value="" class="uni-input"
 						style="border-bottom: 1x solid #ddd;"
+						   v-model="oldpwd"
 					/>
 					<input type="text" password placeholder="请输入新密码" value="" class="uni-input"
 						style="border-bottom: 1x solid #ddd;"
+						   v-model="newpwd"
 					/>
 					<input type="text" password placeholder="请再次输入新密码" value="" class="uni-input"
 						style="border-bottom: 1x solid #ddd;"
+						   v-model="repwd"
 					/>
 					<button type="primary" size="mini"
 						style="display: block; margin-top: 8px;"
+							@click="upUsername"
 					>提交修改</button>
 				</view>
 			</view>
@@ -57,20 +82,150 @@
 </template>
 
 <script>
-	
+
 	import {uniPopup} from '@dcloudio/uni-ui'
+	import {changeUsername,relogin,changePwd} from "../../util/userInfo";
+
 	export default {
 		data() {
 			return {
-				
+				url:"http://47.94.210.131:4430",
+				userInfo:null,
+				oldpwd:"",
+				newpwd:"",
+				repwd:"",
+				newUsername:"",
+				newtel:""
 			}
+		},
+		onShow(){
+			uni.getStorage({
+				key:"info",
+				success:(e)=>{
+					this.userInfo = JSON.parse(e.data)//这就是你想要取的token
+				}
+			})
 		},
 		methods: {
 			changeName(){
 				this.$refs.popupName.open()
 			},
-			changePwd(){
+			changeTel(){
+				this.$refs.popuptel.open()
+			},
+			changePwd() {
 				this.$refs.popupPwd.open()
+			},
+			upName(){
+				changeUsername({
+					id:this.userInfo.id,
+					username:this.newUsername,
+					password:this.userInfo.password
+				}).then(res=>{
+					if(res[1].data===1){
+						uni.showToast({
+							title:"修改成功",
+							duration:1500,
+							mask:false,
+							icon:"none"
+						});
+						this.$refs.popupName.close()
+						this.userInfo.username = this.newUsername
+						this.newUsername = ""
+					}else {
+						uni.showToast({
+							title:"修改失败",
+							duration:1500,
+							mask:false,
+							icon:"none"
+						});
+					}
+				})
+			},
+			upUsername(){
+				if(!(this.newpwd&&this.oldpwd&&this.repwd)){
+					uni.showToast({
+						title:"请将信息填写完整",
+						duration:1500,
+						mask:false,
+						icon:"none"
+					});
+					return;
+				}
+				if(this.newpwd!=this.repwd){
+					uni.showToast({
+						title:"请使两次密码一致",
+						duration:1500,
+						mask:false,
+						icon:"none"
+					});
+					return;
+				}
+				relogin({
+					username: this.userInfo.username,
+					password:this.oldpwd
+				}).then(res=>{
+					if(res[1].data){
+						changePwd({
+							id:this.userInfo.id,
+							password:this.newpwd
+						}).then(res=>{
+							if(res[1].data){
+								uni.showToast({
+									title:"修改密码成功",
+									duration:1500,
+									mask:false,
+									icon:"none"
+								});
+								this.$refs.popupPwd.close()
+								this.userInfo.password = this.newpwd
+								this.newpwd=""
+								this.oldpwd=""
+								this.repwd=""
+							}
+						})
+					}else {
+						uni.showToast({
+							title:"密码输入不正确",
+							duration:1500,
+							mask:false,
+							icon:"none"
+						});
+						this.oldpwd=""
+					}
+				})
+			},
+			upImg(){
+				console.log("上传头像")
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album'], //从相册选择
+					success: (res)=>{
+						const tempFilePaths = res.tempFilePaths;
+						const uploadTask = uni.uploadFile({
+							url : this.url+"/updateUser",
+							filePath: tempFilePaths[0],
+							name: 'file',
+							formData: {
+								'user': 'test'
+							},
+							success: function (uploadFileRes) {
+								console.log(uploadFileRes.data);
+							}
+						});
+
+						uploadTask.onProgressUpdate(function (res) {
+							_self.percent = res.progress;
+							// console.log('上传进度' + res.progress);
+							// console.log('已经上传的数据长度' + res.totalBytesSent);
+							// console.log('预期需要上传的数据总长度' + res.totalBytesExpectedToSend);
+						});
+					},
+					error : function(e){
+						console.log(e);
+					}
+				});
 			}
 		},
 		components: {
@@ -80,6 +235,7 @@
 </script>
 
 <style lang="less" scoped>
+
 	.list .item{
 		box-sizing: border-box;
 		padding: 0 10px;
@@ -94,7 +250,7 @@
 			float: right;
 		}
 	}
-	
+
 	.box{
 		padding: 15px;
 		width: 550upx;

@@ -13,6 +13,8 @@
 
 
 <script>
+	import {listBuying} from "../../util/buying";
+
 	export default {
 		data() {
 			return {
@@ -33,6 +35,11 @@
 				},
 				]
 			}
+		},
+		created(){
+			listBuying({id:1}).then(res=>{
+				console.log(res)
+			})
 		},
 		methods: {
 

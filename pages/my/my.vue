@@ -11,7 +11,6 @@
 		</view>
 		<view class="list">
 			<view class="item" @tap="userInfo">个人信息</view>
-			<view class="item" @tap="collect">我的收藏</view>
 			<view class="item" @tap="buying">我的购买</view>
 			<view class="item" @tap="publish">我的发布</view>
 			<view class="item" @tap="feedback">我的反馈</view>
@@ -36,11 +35,6 @@
 				userInfo(){
 					uni.navigateTo({
 						url:"../userInfo/userInfo"
-					})
-				},
-				collect(){
-					uni.navigateTo({
-						url:"../collect/collect"
 					})
 				},
 				buying(){

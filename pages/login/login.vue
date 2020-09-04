@@ -103,6 +103,7 @@ export default {
 				}
 			});
 		},
+
 		register: function() {
 			this.hover = true;
 			this.type = '注册';
@@ -146,14 +147,14 @@ export default {
 				uni.request({
 					url: 'http://47.94.210.131:8080/user/login',
 					method: 'GET',
-					data: { password: this.password, stuno: this.stuno },
+					data: { password: this.password, username: this.stuno },
 					success: res => {
 						console.log(res);
-						if (res.data == '') {
+						if (res.data) {
 							//本地存储数据
 							uni.setStorage({
-								key: 'stuno',
-								data: this.stuno,
+								key: 'info',
+								data: JSON.stringify(res.data),
 								success: function() {
 									console.log('success');
 								}
@@ -174,11 +175,6 @@ export default {
 								title: '提示',
 								content: '您填写的登录信息有误，请确定后再次登录',
 								success: function(res) {
-									if (res.confirm) {
-										console.log('用户点击确定');
-									} else if (res.cancel) {
-										console.log('用户点击取消');
-									}
 								}
 							});
 						}
