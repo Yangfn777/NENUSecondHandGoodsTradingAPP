@@ -117,6 +117,15 @@
 				this.info.type = this.stateList[e.target.value[0]]
 			},
 			publishGoods(){
+				if(!this.userInfo){
+					console.log(111)
+					uni.showToast({
+						title: '请您先登录哦',
+						icon:"none",
+						duration: 1000
+					});
+					return;
+				}
 				this.info.userId = this.userInfo.id;
 				putGoods(this.info).then(res=>{
 					let goodId = res[1].data;
@@ -137,11 +146,13 @@
 										title:"",
 										view:0
 									}
-									this.form.state = -1;
-									this.imgList = [];
-									uni.navigateTo({
-										url: '/pages/publish/publish',
-									});
+
+									uni.switchTab({
+										url: '/pages/index/index',
+									})
+									// uni.To({
+									// 	url: '/pages/index/index',
+									// });
 								}
 							},
 							fail: () => {

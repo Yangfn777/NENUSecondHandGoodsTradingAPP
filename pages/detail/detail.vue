@@ -1,5 +1,5 @@
 <template>
-	<view class="">
+	<view class="" style="padding-bottom:50rpx;">
 		<view class="w-100 d-flex" style="padding:16rpx;border-bottom: 1px solid #BEBEBE;">
 			<view class="" style="width:80%;">
 				<view class="" style="font-size: 18px; font-weight: bold;">{{ good.title }}</view>
@@ -99,13 +99,28 @@ export default {
 			pic:null,
 		};
 	},
+	onShow(){
+		//获取用户本身的id
+		uni.getStorage({
+			key:'info',
+			success: (res)=> {
+				console.log("333");
+				console.log(JSON.parse(res.data));
+				this.buyerId=JSON.parse(res.data).id;
+				console.log(this.buyerId);
+			}
+		});
+		console.log(this.buyerId);
+	},
 	onLoad(option) {
 		//获取用户本身的id
 		uni.getStorage({
-			key: 'info',
+			key:'info',
 			success: (res)=> {
+				console.log("333");
 				console.log(JSON.parse(res.data));
 				this.buyerId=JSON.parse(res.data).id;
+				console.log(this.buyerId);
 			}
 		});
 		console.log(this.buyerId);

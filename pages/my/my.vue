@@ -6,7 +6,7 @@
 		<view class="head position-relative" >
 			<image class="bg" :src="'../../static/images/16.jpg'" mode=""></image>
 			<view class="" style="height: 100%;position: relative;z-index: 1;">
-				<image :src="info&&info.headurl?info.headurl:'../../static/images/userpic.png'" class="rounded-circle mt-5" style="width: 145rpx;
+				<image :src="userInfo.headurl?userInfo.headurl:'../../static/images/userpic.png'" class="rounded-circle mt-5" style="width: 145rpx;
 				height:145rpx; border:5rpx solid #F1F1F1"></image>
 				<view class="a-center" v-if="info">{{info?info.username:''}}</view>
 
@@ -26,6 +26,7 @@
 	        data() {  
 	            return {
 	            	info:null,
+					baseUrl:'http://47.94.210.131:8080',
 				};
 	        },
 			onShow(){
@@ -35,6 +36,7 @@
 						this.info = JSON.parse(e.data)//这就是你想要取的token
 					}
 				})
+				console.log(this.info);
 			},
 	        methods: {
 				login(){

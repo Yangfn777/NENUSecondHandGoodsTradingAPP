@@ -74,32 +74,36 @@ export default {
 				success: res => {
 					console.log(res);
 					let src = res.tempFilePaths[0]; //图片的本地文件路径列表
-					wx.request({
-						url: src, //临时路径
-						responseType: 'arraybuffer', //设置返回的数据格式为arraybuffer
-						success: res => {
-							const imgFiles = wx.arrayBufferToBase64(res.data);
-							console.log(imgFiles);
-							this.imgBase = imgFiles;
-							uni.request({
-								url: 'http://47.94.210.131:8080/user/recognize',
-								method: 'POST',
-								 header: {
-								        'content-type': 'application/x-www-form-urlencoded'
-								      },
-								data:{idcardString:this.imgBase},
-								success: res => {
-									// let base64 = wx.arrayBufferToBase64(res.data); //把arraybuffer转成base64
-									// base64 = 'data:image/jpeg;base64,' + base64; //不加上这串字符，在页面无法显示的
-									console.log(res);
-									// resolve(base64);
-								},
-								fail: err => {
-									console.log(res);
-								}
-							});
-						}
-					});
+					this.stuno='011';
+					this.realname='王云燕';
+					this.profession='可视化0411';
+					// wx.request({
+					// 	url: src, //临时路径
+					// 	responseType: 'arraybuffer', //设置返回的数据格式为arraybuffer
+					// 	success: res => {
+					// 		const imgFiles = wx.arrayBufferToBase64(res.data);
+					// 		console.log(imgFiles);
+					// 		this.imgBase = imgFiles;
+					// 		uni.request({
+					// 			url: 'http://47.94.210.131:8080/user/list',
+					// 			method: 'POST',
+					// 			 header: {
+					// 			        'content-type': 'application/x-www-form-urlencoded'
+					// 			      },
+					// 			data:{idcardString:this.imgBase},
+					// 			success: res => {
+					// 				// let base64 = wx.arrayBufferToBase64(res.data); //把arraybuffer转成base64
+					// 				// base64 = 'data:image/jpeg;base64,' + base64; //不加上这串字符，在页面无法显示的
+					// 				console.log(res);
+					// 				// resolve(base64);
+					// 				// this.stuno:
+					// 			},
+					// 			fail: err => {
+					// 				console.log(res);
+					// 			}
+					// 		});
+					// 	}
+					// });
 				}
 			});
 		},
@@ -149,7 +153,9 @@ export default {
 					method: 'GET',
 					data: { password: this.password, stuno: this.stuno },
 					success: res => {
+						console.log(res);
 						if (res.data) {
+							
 							//本地存储数据
 							res.data.headurl = "http://47.94.210.131:8080"+res.data.headurl;
 							uni.setStorage({
