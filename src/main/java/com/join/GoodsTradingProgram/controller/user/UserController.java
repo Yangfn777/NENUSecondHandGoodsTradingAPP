@@ -103,7 +103,9 @@ public class UserController {
         // 传入可选参数调用接口
         HashMap<String, String> options = new HashMap<String, String>();
         options.put("recognize_granularity", "big");
+        options.put("language_type", "CHN_ENG");
         options.put("detect_direction", "true");
+        options.put("detect_language", "true");
         options.put("vertexes_location", "true");
         options.put("probability", "true");
 
@@ -114,7 +116,7 @@ public class UserController {
         // 参数为本地图片二进制数组
         //String idcardString = user.getIdcardString();//获得学生证照片的basic64码
         byte[] file = IdcardUtils.decode(idcardString);
-        JSONObject res = client.accurateGeneral(file, options);
+        JSONObject res = client.general(file, options);
 
 //        HashMap<String, String> data = new HashMap<String, String>();
 //        Iterator it = res.keys();
@@ -126,8 +128,6 @@ public class UserController {
 //            String value = String.valueOf(res.get(key));
 //            data.put(key, value);
 //        }
-        //HashMap<String,Object> data = new HashMap<String, Object>();
-        //String s = String.valueOf(res);
         return res;
     }
 
