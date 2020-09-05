@@ -137,9 +137,12 @@
 										title:"",
 										view:0
 									}
-									uni.navigateTo({
-										url: '/pages/publish/publish',
-									});
+									uni.switchTab({
+										url: '/pages/index/index',
+									})
+									// uni.To({
+									// 	url: '/pages/index/index',
+									// });
 								}
 							},
 							fail: () => {
